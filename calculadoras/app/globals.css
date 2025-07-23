@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 216 12% 23%;
+    --card: 0 0% 100%;
+    --card-foreground: 216 12% 23%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 12% 23%;
+    --primary: 37 92% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 13% 95%;
+    --secondary-foreground: 216 12% 23%;
+    --muted: 216 13% 98%;
+    --muted-foreground: 216 6% 42%;
+    --accent: 216 13% 95%;
+    --accent-foreground: 216 12% 23%;
+    --destructive: 0 62% 57%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 13% 90%;
+    --input: 216 13% 90%;
+    --ring: 37 92% 58%;
+  }
+
+  .dark {
+    --background: 216 12% 8%;
+    --foreground: 216 13% 95%;
+    --card: 216 12% 8%;
+    --card-foreground: 216 13% 95%;
+    --popover: 216 12% 8%;
+    --popover-foreground: 216 13% 95%;
+    --primary: 37 92% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 12% 15%;
+    --secondary-foreground: 216 13% 95%;
+    --muted: 216 12% 15%;
+    --muted-foreground: 216 6% 58%;
+    --accent: 216 12% 15%;
+    --accent-foreground: 216 13% 95%;
+    --destructive: 0 62% 57%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 12% 15%;
+    --input: 216 12% 15%;
+    --ring: 37 92% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* CSW Brand Colors */
+.brand-orange {
+  background-color: #f8b133;
+}
+
+.brand-text {
+  color: #374151;
+}
+
+/* KaTeX Styling */
+.katex-display {
+  margin: 1em 0;
+}
+
+.katex {
+  font-size: 1.1em;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .katex-display {
+    font-size: 0.9em;
+    overflow-x: auto;
+  }
+}

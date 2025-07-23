@@ -1,0 +1,57 @@
+{
+  "name": "calculadoras-ingenieria-civil",
+  "version": "2.0.0",
+  "description": "Suite completa de 97 calculadoras especializadas para ingeniería estructural",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate:calculator": "node scripts/generate-calculator.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "clsx": "^2.1.1",
+    "katex": "^0.16.8",
+    "lucide-react": "^0.453.0",
+    "next": "15.4.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-katex": "^3.0.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-katex": "^3.0.4",
+    "eslint": "^8",
+    "eslint-config-next": "15.4.1",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "ingeniería",
+    "estructural",
+    "vigas",
+    "pórticos",
+    "losas",
+    "acero",
+    "calculadora",
+    "nextjs",
+    "typescript"
+  ],
+  "author": "CSW Ingeniería Civil",
+  "homepage": "https://www.cswingenieriacivil.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gauss137/viga-simplemente-apoyada-carga-uniforme.git"
+  }
+}
