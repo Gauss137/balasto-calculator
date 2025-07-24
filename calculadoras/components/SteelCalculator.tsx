@@ -404,7 +404,7 @@ export function SteelCalculator() {
               </h2>
               <Button
                 onClick={() => setSelectedTable(null)}
-                className="mt-6 md:mt-0 md:ml-4 bg-[#f8b133] text-white border-2 border-[#444] shadow-sm hover:bg-[#d9981e] hover:border-[#444] focus:ring-2 focus:ring-[#f8b133] focus:ring-offset-2 transition-colors"
+                className="w-full max-w-xs h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition rounded-md font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-8 md:mt-0 md:ml-4"
                 size="sm"
               >
                 Cambiar tabla
