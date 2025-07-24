@@ -402,13 +402,6 @@ export function SteelCalculator() {
               <h2 className="text-lg font-bold text-gray-800 text-center md:text-left">
                 {tableOptions.find(option => option.value === selectedTable!)?.title}
               </h2>
-              <Button
-                onClick={() => setSelectedTable(null)}
-                className="w-full max-w-xs md:w-auto md:max-w-none h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition rounded-md font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-8 md:mt-0 md:ml-4"
-                size="sm"
-              >
-                Cambiar tabla
-              </Button>
             </div>
             {renderSelectedTable()}
           </div>
