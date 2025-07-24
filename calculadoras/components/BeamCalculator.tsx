@@ -80,8 +80,14 @@ export function BeamCalculator() {
               id="L"
               type="number"
               step="0.01"
-              value={inputData.L}
+              value={inputData.L === undefined || inputData.L === null || isNaN(Number(inputData.L)) ? "" : inputData.L}
               onChange={(e) => handleInputChange('L', e.target.value)}
+              onBlur={(e) => {
+                const val = e.target.value;
+                if (val === "" || isNaN(Number(val)) || Number(val) <= 0) {
+                  handleInputChange('L', "1.0");
+                }
+              }}
               placeholder="Ej: 1.0"
             />
           </div>
@@ -92,8 +98,14 @@ export function BeamCalculator() {
               id="w"
               type="number"
               step="0.01"
-              value={inputData.w}
+              value={inputData.w === undefined || inputData.w === null || isNaN(Number(inputData.w)) ? "" : inputData.w}
               onChange={(e) => handleInputChange('w', e.target.value)}
+              onBlur={(e) => {
+                const val = e.target.value;
+                if (val === "" || isNaN(Number(val)) || Number(val) < 0) {
+                  handleInputChange('w', "0");
+                }
+              }}
               placeholder="Ej: 1.0"
             />
           </div>
@@ -104,7 +116,7 @@ export function BeamCalculator() {
               id="E"
               type="number"
               step="100"
-              value={inputData.E}
+              value={inputData.E === undefined || inputData.E === null || isNaN(Number(inputData.E)) ? "" : inputData.E}
               onChange={(e) => handleInputChange('E', e.target.value)}
               placeholder="Ej: 200000"
             />
@@ -116,7 +128,7 @@ export function BeamCalculator() {
               id="I"
               type="number"
               step="1000"
-              value={inputData.I}
+              value={inputData.I === undefined || inputData.I === null || isNaN(Number(inputData.I)) ? "" : inputData.I}
               onChange={(e) => handleInputChange('I', e.target.value)}
               placeholder="Ej: 180000"
             />
@@ -129,7 +141,7 @@ export function BeamCalculator() {
               type="number"
               step="0.01"
               min="0"
-              value={inputData.x}
+              value={inputData.x === undefined || inputData.x === null || isNaN(Number(inputData.x)) ? "" : inputData.x}
               onChange={(e) => handleInputChange('x', e.target.value)}
               placeholder="Ej: 0.5"
             />

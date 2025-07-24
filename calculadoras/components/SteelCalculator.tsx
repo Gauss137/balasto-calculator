@@ -129,7 +129,7 @@ export function SteelCalculator() {
               min="0"
               step="1"
               max="999"
-              value={inputData.table1.quantities[spec.diameter.toString()] === undefined ? "" : inputData.table1.quantities[spec.diameter.toString()]}
+              value={inputData.table1.quantities[spec.diameter.toString()] === undefined || inputData.table1.quantities[spec.diameter.toString()] === null || isNaN(Number(inputData.table1.quantities[spec.diameter.toString()])) ? "" : inputData.table1.quantities[spec.diameter.toString()]}
               onChange={(e) => {
                 // Solo permitir enteros positivos o vacío
                 const val = e.target.value;
@@ -185,7 +185,7 @@ export function SteelCalculator() {
           type="number"
           min="0"
           step="0.01"
-          value={inputData.table2.targetArea === 0 ? "" : inputData.table2.targetArea.toString()}
+          value={inputData.table2.targetArea === undefined || inputData.table2.targetArea === null || isNaN(Number(inputData.table2.targetArea)) ? "" : inputData.table2.targetArea}
           onChange={(e) => {
             const val = e.target.value;
             updateTable2TargetArea(val === "" ? 0 : Number(val));
@@ -267,7 +267,7 @@ export function SteelCalculator() {
                 min="1"
                 step="1"
                 max="99"
-                value={inputData.table3.quantities[spec.diameter.toString()] === undefined ? "" : inputData.table3.quantities[spec.diameter.toString()]}
+                value={inputData.table3.quantities[spec.diameter.toString()] === undefined || inputData.table3.quantities[spec.diameter.toString()] === null || isNaN(Number(inputData.table3.quantities[spec.diameter.toString()])) ? "" : inputData.table3.quantities[spec.diameter.toString()]}
                 onChange={(e) => {
                   // Solo permitir enteros positivos o vacío
                   const val = e.target.value;
@@ -310,7 +310,7 @@ export function SteelCalculator() {
               type="number"
               step="0.01"
               min="0"
-              value={inputData.table3.steelRatio === undefined ? "" : inputData.table3.steelRatio}
+              value={inputData.table3.steelRatio === undefined || inputData.table3.steelRatio === null || isNaN(Number(inputData.table3.steelRatio)) ? "" : inputData.table3.steelRatio}
               onChange={(e) => updateTable3({ steelRatio: e.target.value === "" ? 0 : Number(e.target.value), spacing: undefined })}
               onBlur={(e) => {
                 const val = e.target.value;
@@ -340,7 +340,7 @@ export function SteelCalculator() {
               type="number"
               step="0.1"
               min="0"
-              value={inputData.table3.spacing === undefined ? "" : inputData.table3.spacing}
+              value={inputData.table3.spacing === undefined || inputData.table3.spacing === null || isNaN(Number(inputData.table3.spacing)) ? "" : inputData.table3.spacing}
               onChange={(e) => updateTable3({ spacing: e.target.value === "" ? 0 : Number(e.target.value), steelRatio: undefined })}
               onBlur={(e) => {
                 const val = e.target.value;

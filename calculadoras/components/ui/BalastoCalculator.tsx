@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 
 export function BalastoCalculator() {
    const [tipoLosa, setTipoLosa] = useState("Cuadrada");
-   const [ladoLargo, setLadoLargo] = useState(0.3);
-   const [ladoCorto, setLadoCorto] = useState(0.3);
+   const [ladoLargo, setLadoLargo] = useState("0.3");
+   const [ladoCorto, setLadoCorto] = useState("0.3");
      const [tabla, setTabla] = useState("2");
      const [tipoSuelo, setTipoSuelo] = useState("Granular");
      const [resultado, setResultado] = useState<number | null>(null);
@@ -23,8 +23,8 @@ export function BalastoCalculator() {
        moduloFinalCohesivo: number, 
        factorForma: number
      } | null>(null);
-     const [kUsuario, setKUsuario] = useState(0.0);
-       const [porcentajeGranular, setPorcentajeGranular] = useState(50);
+     const [kUsuario, setKUsuario] = useState("");
+       const [porcentajeGranular, setPorcentajeGranular] = useState("50");
      // Estado para mostrar/ocultar tablas
    const [mostrarTablas, setMostrarTablas] = useState(false);
 
@@ -39,21 +39,30 @@ export function BalastoCalculator() {
 
      // Manejar cambio de lado largo
    const handleLadoLargoChange = (valor: string) => {
-     const numeroValor = parseFloat(valor);
-     // Permitir campo vacío o valores válidos
-     if (valor === "" || !isNaN(numeroValor)) {
-       const valorFinal = valor === "" ? 0.3 : numeroValor;
-       setLadoLargo(valorFinal);
-       // Si es cuadrada, sincronizar el lado corto
-       if (tipoLosa === "Cuadrada") {
-         setLadoCorto(valorFinal);
-       }
+     setLadoLargo(valor);
+     if (tipoLosa === "Cuadrada") {
+       setLadoCorto(valor);
      }
    };
 
+     // Manejar cambio de lado corto
+   const handleLadoCortoChange = (valor: string) => {
+     setLadoCorto(valor);
+   };
+
+     // Manejar cambio de kUsuario
+   const handleKUsuarioChange = (valor: string) => {
+     setKUsuario(valor);
+   };
+
+     // Manejar cambio de porcentajeGranular
+   const handlePorcentajeGranularChange = (valor: string) => {
+     setPorcentajeGranular(valor);
+   };
+
      const calcularModulo = () => {
-     const J11 = ladoLargo;  // Lado largo
-     const J12 = ladoCorto;  // Lado corto
+     const J11 = parseFloat(ladoLargo);  // Lado largo
+     const J12 = parseFloat(ladoCorto);  // Lado corto
      
      // Validaciones
      if (J11 < 0.3) {
@@ -67,11 +76,11 @@ export function BalastoCalculator() {
      }
     
      // Calcular k según el tipo de suelo (E15 en Excel)
-     if (kUsuario <= 0) {
+     if (parseFloat(kUsuario) <= 0) {
        alert("Debe ingresar un valor válido para el coeficiente k");
        return;
      }
-     const E15 = kUsuario;
+     const E15 = parseFloat(kUsuario);
 
            // Cálculo del factor de forma (n) = SI(E11="Cuadrada", 1, J11/J12)
       const factorForma = tipoLosa === "Cuadrada" ? 1 : J11 / J12;
@@ -122,8 +131,8 @@ export function BalastoCalculator() {
       } else if (tipoSuelo === "Cohesivo") {
         coeficienteBalastoFinal = moduloFinalCohesivo;
       } else { // tipoSuelo === "Mixto"
-        const porcentajeCohesivo = 100 - porcentajeGranular;
-        coeficienteBalastoFinal = ((porcentajeGranular / 100) * moduloFinalGranular) + ((porcentajeCohesivo / 100) * moduloFinalCohesivo);
+        const porcentajeCohesivo = 100 - parseFloat(porcentajeGranular);
+        coeficienteBalastoFinal = ((parseFloat(porcentajeGranular) / 100) * moduloFinalGranular) + ((porcentajeCohesivo / 100) * moduloFinalCohesivo);
       }
 
             setResultado(coeficienteBalastoFinal);
@@ -244,6 +253,12 @@ export function BalastoCalculator() {
                 step="0.01"
                 value={ladoLargo}
                 onChange={(e) => handleLadoLargoChange(e.target.value)}
+                onBlur={() => {
+                  if (ladoLargo === "" || parseFloat(ladoLargo) < 0.3 || isNaN(parseFloat(ladoLargo))) {
+                    setLadoLargo("0.3");
+                    if (tipoLosa === "Cuadrada") setLadoCorto("0.3");
+                  }
+                }}
               />
            </div>
 
@@ -255,11 +270,10 @@ export function BalastoCalculator() {
                 min="0.3"
                 step="0.01"
                 value={ladoCorto}
-                onChange={(e) => {
-                  const valor = e.target.value;
-                  const numeroValor = parseFloat(valor);
-                  if (valor === "" || !isNaN(numeroValor)) {
-                    setLadoCorto(valor === "" ? 0.3 : numeroValor);
+                onChange={(e) => handleLadoCortoChange(e.target.value)}
+                onBlur={() => {
+                  if (ladoCorto === "" || parseFloat(ladoCorto) < 0.3 || isNaN(parseFloat(ladoCorto))) {
+                    setLadoCorto("0.3");
                   }
                 }}
                 disabled={tipoLosa === "Cuadrada"}
@@ -301,13 +315,10 @@ export function BalastoCalculator() {
                     min="0"
                     max="100"
                     value={tipoSuelo === "Granular" ? 100 : tipoSuelo === "Cohesivo" ? 0 : porcentajeGranular}
-                    onChange={(e) => {
-                      if (tipoSuelo === "Mixto") {
-                        const valor = e.target.value;
-                        const numeroValor = parseFloat(valor);
-                        if (valor === "" || !isNaN(numeroValor)) {
-                          setPorcentajeGranular(valor === "" ? 0 : numeroValor);
-                        }
+                    onChange={(e) => tipoSuelo === "Mixto" && handlePorcentajeGranularChange(e.target.value)}
+                    onBlur={() => {
+                      if (porcentajeGranular === "" || parseFloat(porcentajeGranular) < 0 || parseFloat(porcentajeGranular) > 100 || isNaN(parseFloat(porcentajeGranular))) {
+                        setPorcentajeGranular("50");
                       }
                     }}
                     disabled={tipoSuelo !== "Mixto"}
@@ -319,7 +330,7 @@ export function BalastoCalculator() {
                  <Input
                    id="porcentajeCohesivo"
                    type="number"
-                   value={tipoSuelo === "Granular" ? 0 : tipoSuelo === "Cohesivo" ? 100 : 100 - porcentajeGranular}
+                   value={tipoSuelo === "Granular" ? 0 : tipoSuelo === "Cohesivo" ? 100 : 100 - parseFloat(porcentajeGranular)}
                    disabled
                    className="bg-gray-100 cursor-not-allowed"
                  />
@@ -364,12 +375,11 @@ export function BalastoCalculator() {
                  type="number"
                  step="0.001"
                  min="0"
-                 value={kUsuario}
-                 onChange={(e) => {
-                   const valor = e.target.value;
-                   const numeroValor = parseFloat(valor);
-                   if (valor === "" || !isNaN(numeroValor)) {
-                     setKUsuario(valor === "" ? 0 : numeroValor);
+                 value={kUsuario === undefined || kUsuario === null || isNaN(Number(kUsuario)) ? "" : kUsuario}
+                 onChange={(e) => handleKUsuarioChange(e.target.value)}
+                 onBlur={() => {
+                   if (kUsuario === "" || parseFloat(kUsuario) <= 0 || isNaN(parseFloat(kUsuario))) {
+                     setKUsuario("0");
                    }
                  }}
                />
@@ -425,7 +435,7 @@ export function BalastoCalculator() {
                  <span className="font-medium">Valor k utilizado:</span> {kUtilizado?.toFixed(3)} kp/cm³
                  <span className="block text-xs mt-1">
                    Tipo de suelo: {tipoSuelo}
-                   {tipoSuelo === "Mixto" && ` (${porcentajeGranular}% granular + ${100 - porcentajeGranular}% cohesivo)`}
+                   {tipoSuelo === "Mixto" && ` (${parseFloat(porcentajeGranular)}% granular + ${100 - parseFloat(porcentajeGranular)}% cohesivo)`}
                  </span>
                </div>
               
