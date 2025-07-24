@@ -77,6 +77,7 @@ export const ROUTES = {
   // Ruta legacy - redirige a la primera calculadora específica
   BEAM_CALCULATOR: '/beam-calculator',
   STEEL_CALCULATOR: '/steel-calculator',
+  BALASTO_CALCULATOR: '/balasto-calculator',
   FLEXION: '/flexion',
   MANUAL: '/manual',
   

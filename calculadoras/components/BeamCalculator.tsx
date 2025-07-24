@@ -50,7 +50,7 @@ export function BeamCalculator() {
         <div className="w-full flex justify-center items-center h-60 md:h-80 bg-white text-gray-500 relative overflow-hidden rounded-lg border border-gray-200">
           <div className="relative w-full h-full flex justify-center items-center select-none">
             <Image
-              src="/esquema.svg"
+              src="/Calculadora de Viga Simplemente Apoyada con Carga Uniforme.svg"
               alt="Esquema de la viga simplemente apoyada con carga uniforme"
               width={800}
               height={300}
@@ -140,7 +140,7 @@ export function BeamCalculator() {
           <Button 
             onClick={calculate}
             disabled={!isValidInput}
-            className="w-full max-w-xs h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition disabled:opacity-50 disabled:cursor-not-allowed rounded-md font-medium"
+            className="w-full max-w-xs h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition rounded-md font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Calcular
           </Button>
@@ -186,7 +186,7 @@ export function BeamCalculator() {
           <div className="mt-4 flex justify-center">
             <Button 
               onClick={handleDownloadCSV}
-              className="w-full max-w-xs h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition rounded-md font-medium flex items-center justify-center gap-2"
+              className="w-full max-w-xs h-11 px-8 bg-[#f8b133] text-white border border-gray-800 hover:bg-[#e6a030] transition rounded-md font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Download size={18} />
               Descargar resultados (CSV)
@@ -205,8 +205,8 @@ export function BeamCalculator() {
           <div>
             <h3 className="font-semibold text-gray-700 mb-2">Reacciones:</h3>
             <div className="bg-gray-50 p-3 rounded border">
-              <div className="text-center">
-                <BlockMath math="R = \frac{wL}{2}" />
+              <div className="text-center font-mono text-sm">
+                R = wL/2
               </div>
             </div>
           </div>
@@ -215,15 +215,15 @@ export function BeamCalculator() {
             <h3 className="font-semibold text-gray-700 mb-2">Fuerzas cortantes:</h3>
             <div className="bg-gray-50 p-3 rounded border space-y-3">
               <div>
-                <div className="text-center mb-2">
+                <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Cortante máximo:</span>
-                  <BlockMath math="V_{max} = \frac{wL}{2}" />
+                  <div className="font-mono text-sm">V_max = wL/2</div>
                 </div>
               </div>
               <div>
                 <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Cortante en sección x:</span>
-                  <BlockMath math="V_x = w\left(\frac{L}{2}-x\right)" />
+                  <div className="font-mono text-sm">V_x = w(L/2 - x)</div>
                 </div>
               </div>
             </div>
@@ -233,15 +233,15 @@ export function BeamCalculator() {
             <h3 className="font-semibold text-gray-700 mb-2">Momentos flectores:</h3>
             <div className="bg-gray-50 p-3 rounded border space-y-3">
               <div>
-                <div className="text-center mb-2">
+                <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Momento máximo:</span>
-                  <BlockMath math="M_{max} = \frac{wL^2}{8}" />
+                  <div className="font-mono text-sm">M_max = wL²/8</div>
                 </div>
               </div>
               <div>
                 <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Momento en sección x:</span>
-                  <BlockMath math="M_x = \frac{wx}{2}(L-x)" />
+                  <div className="font-mono text-sm">M_x = (wx/2)(L - x)</div>
                 </div>
               </div>
             </div>
@@ -251,15 +251,15 @@ export function BeamCalculator() {
             <h3 className="font-semibold text-gray-700 mb-2">Deflexiones:</h3>
             <div className="bg-gray-50 p-3 rounded border space-y-3">
               <div>
-                <div className="text-center mb-2">
+                <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Flecha máxima:</span>
-                  <BlockMath math="\Delta_{max} = \frac{5wL^4}{384EI}" />
+                  <div className="font-mono text-sm">Δ_max = 5wL⁴/(384EI)</div>
                 </div>
               </div>
               <div>
                 <div className="text-center">
                   <span className="block text-sm text-gray-600 mb-1">Flecha en sección x:</span>
-                  <BlockMath math="\Delta_x = \frac{wx^2(L^3-2Lx^2+x^3)}{24EI}" />
+                  <div className="font-mono text-sm">Δ_x = wx²(L³ - 2Lx² + x³)/(24EI)</div>
                 </div>
               </div>
             </div>

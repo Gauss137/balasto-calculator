@@ -32,6 +32,12 @@ export function Header() {
           >
             Acero
           </Link>
+          <Link 
+            href={ROUTES.BALASTO_CALCULATOR} 
+            className="text-gray-700 hover:text-[#f1d475] transition-colors"
+          >
+            Balasto
+          </Link>
           <a 
             href={EXTERNAL_LINKS.CONTACT}
             target="_blank" 

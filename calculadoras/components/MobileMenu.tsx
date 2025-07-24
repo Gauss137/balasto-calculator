@@ -179,6 +179,15 @@ export function MobileMenu() {
                 <span className="font-medium">Acero</span>
               </Link>
 
+              {/* Balasto */}
+              <Link
+                href={ROUTES.BALASTO_CALCULATOR}
+                className="flex items-center p-3 text-gray-700 hover:text-[#f1d475] hover:bg-gray-50 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                <span className="font-medium">Balasto</span>
+              </Link>
+
               {/* Contacto */}
               <a
                 href={EXTERNAL_LINKS.CONTACT}
