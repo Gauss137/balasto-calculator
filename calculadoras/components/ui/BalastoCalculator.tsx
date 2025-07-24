@@ -146,57 +146,64 @@ export function BalastoCalculator() {
            <thead>
              <tr className="bg-gray-100">
                <th className="border px-2 py-1">Clases de suelo</th>
+               <th className="border px-2 py-1">Coeficiente de balasto (MN/m³)</th>
                <th className="border px-2 py-1">Coeficiente de balasto (kp/cm³)</th>
              </tr>
            </thead>
            <tbody>
              <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={2}>Arena seca o húmeda</td>
+               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena seca o húmeda</td>
              </tr>
              <tr>
                <td className="border px-2 py-1 pl-4">- Suelta</td>
-               <td className="border px-2 py-1">0,64 - 1,92 (1,3)</td>
+               <td className="border px-2 py-1">8 - 25</td>
+               <td className="border px-2 py-1">0.8 - 2.5</td>
              </tr>
              <tr>
                <td className="border px-2 py-1 pl-4">- Media</td>
-               <td className="border px-2 py-1">1,92 - 9,60 (4,0)</td>
+               <td className="border px-2 py-1">25 - 125</td>
+               <td className="border px-2 py-1">2.5 - 12.7</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 pl-4">- Compacta</td>
-               <td className="border px-2 py-1">9,60 - 32,0 (16,0)</td>
+               <td className="border px-2 py-1 pl-4">- Densa</td>
+               <td className="border px-2 py-1">125 - 375</td>
+               <td className="border px-2 py-1">12.7 - 38.2</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={2}>Arena sumergida</td>
+               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena sumergida</td>
              </tr>
              <tr>
                <td className="border px-2 py-1 pl-4">- Suelta</td>
-               <td className="border px-2 py-1">(0,8)</td>
+               <td className="border px-2 py-1">10 - 15</td>
+               <td className="border px-2 py-1">1.0 - 1.5</td>
              </tr>
              <tr>
                <td className="border px-2 py-1 pl-4">- Media</td>
-               <td className="border px-2 py-1">(2,5)</td>
+               <td className="border px-2 py-1">35 - 40</td>
+               <td className="border px-2 py-1">3.6 - 4.1</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 pl-4">- Compacta</td>
-               <td className="border px-2 py-1">(10,0)</td>
+               <td className="border px-2 py-1 pl-4">- Densa</td>
+               <td className="border px-2 py-1">130 - 150</td>
+               <td className="border px-2 py-1">13.3 - 15.3</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={2}>Arcilla</td>
+               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arcilla</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 pl-4">qu = 1-2 kp/cm²</td>
-               <td className="border px-2 py-1">1,6 - 3,2 (2,5)</td>
+               <td className="border px-2 py-1 pl-4">- Rígida</td>
+               <td className="border px-2 py-1">10 - 25</td>
+               <td className="border px-2 py-1">1.0 - 2.5</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 pl-4">qu = 2-4 kp/cm²</td>
-               <td className="border px-2 py-1">3,2 - 6,4 (5,0)</td>
+               <td className="border px-2 py-1 pl-4">- Muy rígida</td>
+               <td className="border px-2 py-1">25 - 50</td>
+               <td className="border px-2 py-1">2.5 - 5.1</td>
              </tr>
              <tr>
-               <td className="border px-2 py-1 pl-4">qu &gt; 4 kp/cm²</td>
-               <td className="border px-2 py-1">&gt; 6,4 (10,0)</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 text-xs italic" colSpan={2}>Entre paréntesis los valores medios</td>
+               <td className="border px-2 py-1 pl-4">- Dura</td>
+               <td className="border px-2 py-1">&gt; 50</td>
+               <td className="border px-2 py-1">&gt; 5.1</td>
              </tr>
            </tbody>
          </table>
