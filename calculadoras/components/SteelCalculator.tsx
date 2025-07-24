@@ -127,10 +127,23 @@ export function SteelCalculator() {
               id={`table1-${spec.diameter}`}
               type="number"
               min="0"
+              step="1"
               max="999"
-              value={inputData.table1.quantities[spec.diameter.toString()] || 0}
-              onChange={(e) => updateTable1Quantity(spec.diameter.toString(), parseInt(e.target.value) || 0)}
-              placeholder="0"
+              value={inputData.table1.quantities[spec.diameter.toString()] === undefined ? "" : inputData.table1.quantities[spec.diameter.toString()]}
+              onChange={(e) => {
+                // Solo permitir enteros positivos o vacío
+                const val = e.target.value;
+                if (val === "" || (/^\d+$/.test(val) && Number(val) >= 0)) {
+                  updateTable1Quantity(spec.diameter.toString(), val === "" ? undefined : Number(val));
+                }
+              }}
+              onBlur={(e) => {
+                const val = e.target.value;
+                if (val === "" || isNaN(Number(val)) || Number(val) < 0) {
+                  updateTable1Quantity(spec.diameter.toString(), 0);
+                }
+              }}
+              placeholder="Cantidad"
             />
           </div>
         ))}
@@ -155,21 +168,35 @@ export function SteelCalculator() {
           Resetear
         </Button>
       </div>
+      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
+        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
+          Cambiar tabla
+        </Button>
+      </div>
     </div>
   );
 
   const renderTable2 = () => (
     <div className="space-y-4">
       <div className="bg-white p-4 rounded-lg border border-gray-200">
-        <Label htmlFor="target-area">Área Total Deseada ({DEFAULT_UNITS.AREA})</Label>
+        <Label htmlFor="targetArea">Área Total Deseada ({DEFAULT_UNITS.AREA})</Label>
         <Input
-          id="target-area"
+          id="targetArea"
           type="number"
-          step="0.01"
           min="0"
-          value={inputData.table2.targetArea || ''}
-          onChange={(e) => updateTable2TargetArea(parseFloat(e.target.value) || 0)}
-          placeholder="Ej: 10.5"
+          step="0.01"
+          value={inputData.table2.targetArea === 0 ? "" : inputData.table2.targetArea.toString()}
+          onChange={(e) => {
+            const val = e.target.value;
+            updateTable2TargetArea(val === "" ? 0 : Number(val));
+          }}
+          onBlur={(e) => {
+            const val = e.target.value;
+            if (val === "" || isNaN(Number(val)) || Number(val) < 0) {
+              updateTable2TargetArea(0);
+            }
+          }}
+          placeholder="Área total deseada"
           className="mt-2"
         />
       </div>
@@ -204,6 +231,11 @@ export function SteelCalculator() {
           Resetear
         </Button>
       </div>
+      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
+        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
+          Cambiar tabla
+        </Button>
+      </div>
     </div>
   );
 
@@ -233,14 +265,32 @@ export function SteelCalculator() {
               <Input
                 type="number"
                 min="1"
+                step="1"
                 max="99"
-                value={inputData.table3.quantities[spec.diameter.toString()] || 1}
-                onChange={(e) => updateTable3({
-                  quantities: {
-                    ...inputData.table3.quantities,
-                    [spec.diameter.toString()]: parseInt(e.target.value) || 1
+                value={inputData.table3.quantities[spec.diameter.toString()] === undefined ? "" : inputData.table3.quantities[spec.diameter.toString()]}
+                onChange={(e) => {
+                  // Solo permitir enteros positivos o vacío
+                  const val = e.target.value;
+                  if (val === "" || (/^\d+$/.test(val) && Number(val) > 0)) {
+                    updateTable3({
+                      quantities: {
+                        ...inputData.table3.quantities,
+                        [spec.diameter.toString()]: val === "" ? undefined : Number(val)
+                      }
+                    });
                   }
-                })}
+                }}
+                onBlur={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || isNaN(Number(val)) || Number(val) < 1) {
+                    updateTable3({
+                      quantities: {
+                        ...inputData.table3.quantities,
+                        [spec.diameter.toString()]: 1
+                      }
+                    });
+                  }
+                }}
                 className="w-16"
                 disabled={!inputData.table3.selectedBars[spec.diameter.toString()]}
               />
@@ -260,11 +310,14 @@ export function SteelCalculator() {
               type="number"
               step="0.01"
               min="0"
-              value={inputData.table3.steelRatio || ''}
-              onChange={(e) => updateTable3({
-                steelRatio: parseFloat(e.target.value) || undefined,
-                spacing: undefined // Limpiar el otro campo
-              })}
+              value={inputData.table3.steelRatio === undefined ? "" : inputData.table3.steelRatio}
+              onChange={(e) => updateTable3({ steelRatio: e.target.value === "" ? 0 : Number(e.target.value), spacing: undefined })}
+              onBlur={(e) => {
+                const val = e.target.value;
+                if (val === "" || isNaN(Number(val)) || Number(val) < 0) {
+                  updateTable3({ steelRatio: 0, spacing: undefined });
+                }
+              }}
               placeholder="Ej: 5.0"
             />
           </div>
@@ -287,11 +340,14 @@ export function SteelCalculator() {
               type="number"
               step="0.1"
               min="0"
-              value={inputData.table3.spacing || ''}
-              onChange={(e) => updateTable3({
-                spacing: parseFloat(e.target.value) || undefined,
-                steelRatio: undefined // Limpiar el otro campo
-              })}
+              value={inputData.table3.spacing === undefined ? "" : inputData.table3.spacing}
+              onChange={(e) => updateTable3({ spacing: e.target.value === "" ? 0 : Number(e.target.value), steelRatio: undefined })}
+              onBlur={(e) => {
+                const val = e.target.value;
+                if (val === "" || isNaN(Number(val)) || Number(val) < 0) {
+                  updateTable3({ spacing: 0, steelRatio: undefined });
+                }
+              }}
               placeholder="Ej: 20.0"
             />
           </div>
@@ -316,6 +372,11 @@ export function SteelCalculator() {
           Resetear
         </Button>
       </div>
+      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
+        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
+          Cambiar tabla
+        </Button>
+      </div>
     </div>
   );
 
@@ -336,14 +397,16 @@ export function SteelCalculator() {
         <>
           {/* Header de tabla seleccionada con botón para cambiar */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-            <div className="flex justify-between items-center mb-4">
-                             <h2 className="text-lg font-bold text-gray-800">
-                 {tableOptions.find(option => option.value === selectedTable!)?.title}
-               </h2>
+            {/* Encabezado de cada calculadora */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-0">
+              <h2 className="text-lg font-bold text-gray-800 text-center md:text-left">
+                {tableOptions.find(option => option.value === selectedTable!)?.title}
+              </h2>
               <Button
-                onClick={() => setSelectedTable(null)}
                 variant="outline"
-                className="text-sm"
+                size="sm"
+                className="mt-2 md:mt-0"
+                onClick={() => setSelectedTable(null)}
               >
                 Cambiar tabla
               </Button>
