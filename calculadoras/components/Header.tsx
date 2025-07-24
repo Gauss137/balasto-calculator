@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_CONFIG, EXTERNAL_LINKS, ROUTES } from '@/lib/constants';
