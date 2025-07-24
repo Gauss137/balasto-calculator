@@ -24,13 +24,17 @@ export function Footer() {
           
           <div className="flex justify-center items-center space-x-4 mt-2">
             <a 
-              href="#" 
+              href="https://cafecito.app/cswingenieriacivil"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#f8b133] text-white px-3 py-1 rounded-full text-xs border border-gray-800 hover:bg-[#e6a030] transition min-w-[80px]"
             >
               Cafecito
             </a>
             <a 
-              href="#" 
+              href="https://www.paypal.com/paypalme/cswingenieriacivil/2"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#f8b133] text-white px-3 py-1 rounded-full text-xs border border-gray-800 hover:bg-[#e6a030] transition min-w-[80px]"
             >
               PayPal

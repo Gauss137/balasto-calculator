@@ -25,9 +25,15 @@ export function useBeamCalculator() {
 
   // Validar si todos los datos son válidos
   const isValidInput = useCallback(() => {
-    return Object.values(inputData).every(value => 
+    const { x, L, w, E, I } = inputData;
+    
+    // x puede ser 0 o mayor, los demás deben ser mayores a 0
+    const isXValid = x !== "" && !isNaN(Number(x)) && Number(x) >= 0;
+    const areLWEIValid = [L, w, E, I].every(value => 
       value !== "" && !isNaN(Number(value)) && Number(value) > 0
     );
+    
+    return isXValid && areLWEIValid;
   }, [inputData]);
 
   // Actualizar datos de entrada

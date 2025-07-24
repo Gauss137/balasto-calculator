@@ -96,10 +96,10 @@ export function SteelCalculator() {
         ))}
       </div>
 
-      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+      <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
         <div className="text-center space-y-2">
-          <div className="font-semibold text-green-800">Área Total de Acero:</div>
-          <div className="text-2xl font-bold text-green-900">
+          <div className="font-semibold text-orange-800">Área Total de Acero:</div>
+          <div className="text-2xl font-bold text-orange-900">
             {results.table1.totalArea.toFixed(2)} {DEFAULT_UNITS.AREA}
           </div>
         </div>

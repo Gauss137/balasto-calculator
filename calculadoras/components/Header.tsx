@@ -10,14 +10,16 @@ export function Header() {
       <nav className="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
           <Link href={ROUTES.HOME} className="flex items-center">
-            <Image
-              src="/negrologotij.png"
+            {/* Logo temporalmente oculto mientras se actualiza el archivo SVG */}
+            {/* <Image
+              src="/negrologotij webpage.svg"
               alt={APP_CONFIG.COMPANY}
               width={150}
               height={60}
               className="h-12 w-auto object-contain"
               priority
-            />
+            /> */}
+            <span className="text-xl font-bold text-gray-900">{APP_CONFIG.COMPANY}</span>
           </Link>
         </div>
         

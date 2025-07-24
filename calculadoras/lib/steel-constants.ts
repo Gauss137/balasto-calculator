@@ -20,7 +20,8 @@ export const STANDARD_REBAR_DIAMETERS = {
   '12': 12,
   '16': 16,
   '20': 20,
-  '25': 25
+  '25': 25,
+  '32': 32
 } as const;
 
 // Labels para cada diámetro
@@ -31,7 +32,8 @@ export const REBAR_LABELS = {
   '12': 'Ø12mm',
   '16': 'Ø16mm',
   '20': 'Ø20mm',
-  '25': 'Ø25mm'
+  '25': 'Ø25mm',
+  '32': 'Ø32mm'
 } as const;
 
 // Unidades específicas para acero

@@ -128,6 +128,7 @@ export function BeamCalculator() {
               id="x"
               type="number"
               step="0.01"
+              min="0"
               value={inputData.x}
               onChange={(e) => handleInputChange('x', e.target.value)}
               placeholder="Ej: 0.5"
