@@ -216,7 +216,7 @@ export function BalastoCalculator() {
          {/* Header */}
          <div className="text-center">
            <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
-             ADAPTACIÓN DEL COEFICIENTE DE BALASTO DE UNA PLACA DE CARGA DE 30cmx30cm PARA EMPLEARLO EN EL MÉTODO DE DISEÑO FLEXIBLE APROXIMADO DE LOSAS
+             Adaptación Del Coeficiente De Balasto De Una Placa De Carga De 30cmx30cm Para Emplearlo En El Método De Diseño Flexible Aproximado De Losas
            </h1>
          </div>
       
