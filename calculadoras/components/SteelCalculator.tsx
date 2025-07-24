@@ -403,10 +403,9 @@ export function SteelCalculator() {
                 {tableOptions.find(option => option.value === selectedTable!)?.title}
               </h2>
               <Button
-                variant="outline"
-                size="sm"
-                className="mt-2 md:mt-0"
                 onClick={() => setSelectedTable(null)}
+                className="mt-4 md:mt-0 bg-[#f8b133] text-white border-2 border-[#f8b133] shadow-sm hover:bg-[#d9981e] hover:border-[#d9981e] focus:ring-2 focus:ring-[#f8b133] focus:ring-offset-2 transition-colors"
+                size="sm"
               >
                 Cambiar tabla
               </Button>
