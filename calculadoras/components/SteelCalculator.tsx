@@ -26,7 +26,7 @@ export function SteelCalculator() {
     resetTable3
   } = useSteelCalculator();
 
-  const [selectedTable, setSelectedTable] = useState('tabla1');
+  const [selectedTable, setSelectedTable] = useState<string | null>(null);
 
   // Auto-calcular cuando cambien los datos
   useEffect(() => {
@@ -44,25 +44,65 @@ export function SteelCalculator() {
   const tableOptions = [
     { 
       value: 'tabla1', 
-      label: 'TABLA 1',
-      title: 'TABLA 1: Cálculo de Área Total de Acero',
-      description: 'Cálculo de Área Total de Acero. Ingresa las cantidades de barras para calcular el área total de acero. La calculadora sumará automáticamente las áreas según el diámetro y cantidad de cada barra.'
+      label: 'CALCULADORA 1',
+      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-3xl font-bold text-gray-700">A<sub className="text-xl">s</sub></span></div>,
+      title: 'CALCULADORA 1: Cálculo de Cuantía Total de Acero',
+      description: 'Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.',
+      useCase: '💡 Úsala cuando: Ya tienes definidas las cantidades de barras por diámetro.'
     },
     { 
       value: 'tabla2', 
-      label: 'TABLA 2',
-      title: 'TABLA 2: Cálculo de Cantidades de Barras',
-      description: 'Cálculo de Cantidades de Barras. Ingresa el área total de acero deseada y la calculadora te sugerirá las cantidades necesarias para cada diámetro de barra.'
+      label: 'CALCULADORA 2',
+      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-3xl font-bold text-gray-700">⌀</span></div>,
+      title: 'CALCULADORA 2: Cálculo de Cantidades de Barras', 
+      description: 'Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.',
+      useCase: '💡 Úsala cuando: Tienes el área de acero requerida del diseño estructural.'
     },
     { 
       value: 'tabla3', 
-      label: 'TABLA 3',
-      title: 'TABLA 3: Cálculo de Cuantías y Separaciones',
-      description: 'Cálculo de Cuantías y Separaciones. Selecciona las barras de interés y sus cantidades. Luego ingresa OPCIÓN 1 (cuantía) para determinar la separación u OPCIÓN 2 (separación) para calcular cuantía.'
+      label: 'CALCULADORA 3',
+      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-2xl font-bold text-gray-700">A<sub className="text-base">s</sub>/m</span></div>,
+      title: 'CALCULADORA 3: Cálculo de Cuantías y Separaciones',
+      description: 'Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.',
+      useCase: '💡 Úsala cuando: Necesites cuantías por metro lineal o espaciamientos específicos.'
     }
   ];
 
+  const renderTableSelection = () => (
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">¿Qué necesitas calcular?</h2>
+        <p className="text-gray-600">Selecciona la calculadora que mejor se adapte a tu situación:</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+        {tableOptions.map((option) => (
+          <div
+            key={option.value}
+            onClick={() => setSelectedTable(option.value)}
+            className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#f8b133] hover:shadow-lg transition-all duration-200 group h-full"
+          >
+                        <div className="text-center h-full grid grid-rows-[auto_auto_auto_auto] gap-4">
+              <div className="flex justify-center">{option.icon}</div>
+              <h3 className="font-bold text-lg text-gray-800 group-hover:text-[#f8b133]">
+                {option.label}
+              </h3>
+              <p className="text-gray-700 font-medium">{option.description}</p>
+              <div className="bg-blue-50 p-3 rounded-lg">
+                <p className="text-sm text-blue-800 font-medium">{option.useCase}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   const renderSelectedTable = () => {
+    if (!selectedTable) {
+      return renderTableSelection();
+    }
+
     switch (selectedTable) {
       case 'tabla1':
         return renderTable1();
@@ -71,7 +111,7 @@ export function SteelCalculator() {
       case 'tabla3':
         return renderTable3();
       default:
-        return renderTable1();
+        return renderTableSelection();
     }
   };
 
@@ -291,43 +331,31 @@ export function SteelCalculator() {
         </p>
       </div>
 
-      {/* Selector de Tabla */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-        <h2 className="text-lg font-bold text-gray-800 mb-4">Seleccionar Calculadora</h2>
-        <div className="space-y-4">
-          <div>
-            <Label htmlFor="table-select">Elige la tabla que deseas usar:</Label>
-            <Select
-              id="table-select"
-              value={selectedTable}
-              onChange={(e) => setSelectedTable(e.target.value)}
-              className="mt-2"
-            >
-              {tableOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </Select>
+      {/* Contenido Principal */}
+      {selectedTable ? (
+        <>
+          {/* Header de tabla seleccionada con botón para cambiar */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+            <div className="flex justify-between items-center mb-4">
+                             <h2 className="text-lg font-bold text-gray-800">
+                 {tableOptions.find(option => option.value === selectedTable!)?.title}
+               </h2>
+              <Button
+                onClick={() => setSelectedTable(null)}
+                variant="outline"
+                className="text-sm"
+              >
+                Cambiar tabla
+              </Button>
+            </div>
+            {renderSelectedTable()}
           </div>
-          
-          {/* Descripción de la tabla seleccionada */}
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <h3 className="font-semibold text-gray-800 mb-2">Descripción:</h3>
-            <p className="text-sm text-gray-700">
-              {tableOptions.find(option => option.value === selectedTable)?.description}
-            </p>
-          </div>
+        </>
+      ) : (
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+          {renderSelectedTable()}
         </div>
-      </div>
-
-      {/* Tabla Seleccionada */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-        <h2 className="text-lg font-bold text-gray-800 mb-4">
-          {tableOptions.find(option => option.value === selectedTable)?.title}
-        </h2>
-        {renderSelectedTable()}
-      </div>
+      )}
 
       {/* Información adicional */}
       <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
