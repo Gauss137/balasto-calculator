@@ -26,7 +26,7 @@ export function SteelCalculator() {
     resetTable3
   } = useSteelCalculator();
 
-  const [selectedTable, setSelectedTable] = useState<string | null>(null);
+  const [selectedTab, setSelectedTab] = useState<string>('tabla1');
 
   // Auto-calcular cuando cambien los datos
   useEffect(() => {
@@ -41,69 +41,87 @@ export function SteelCalculator() {
     calculateTable3();
   }, [calculateTable3]);
 
-  const tableOptions = [
-    { 
-      value: 'tabla1', 
-      label: 'CALCULADORA 1',
-      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-3xl font-bold text-gray-700">A<sub className="text-xl">s</sub></span></div>,
+  // Íconos pequeños para tabs
+  const tabIcons = {
+    tabla1: <span className="text-lg mr-1 align-middle">A<sub className="text-xs">s</sub></span>,
+    tabla2: <span className="text-lg mr-1 align-middle">⌀</span>,
+    tabla3: <span className="text-base mr-1 align-middle">A<sub className="text-xs">s</sub>/m</span>,
+  };
+
+  // Opciones de tabs y descripciones
+  const tabOptions = [
+    {
+      value: 'tabla1',
+      label: 'Cuantía Total',
       title: 'CALCULADORA 1: Cálculo de Cuantía Total de Acero',
       description: 'Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.',
       useCase: '💡 Úsala cuando: Ya tienes definidas las cantidades de barras por diámetro.'
     },
-    { 
-      value: 'tabla2', 
-      label: 'CALCULADORA 2',
-      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-3xl font-bold text-gray-700">⌀</span></div>,
-      title: 'CALCULADORA 2: Cálculo de Cantidades de Barras', 
+    {
+      value: 'tabla2',
+      label: 'Cantidades de Barras',
+      title: 'CALCULADORA 2: Cálculo de Cantidades de Barras',
       description: 'Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.',
       useCase: '💡 Úsala cuando: Tienes el área de acero requerida del diseño estructural.'
     },
-    { 
-      value: 'tabla3', 
-      label: 'CALCULADORA 3',
-      icon: <div className="w-16 h-16 border-2 border-gray-300 rounded-lg flex items-center justify-center bg-gray-50"><span className="text-2xl font-bold text-gray-700">A<sub className="text-base">s</sub>/m</span></div>,
+    {
+      value: 'tabla3',
+      label: 'Cuantías y Separaciones',
       title: 'CALCULADORA 3: Cálculo de Cuantías y Separaciones',
       description: 'Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.',
       useCase: '💡 Úsala cuando: Necesites cuantías por metro lineal o espaciamientos específicos.'
     }
   ];
 
-  const renderTableSelection = () => (
-    <div className="space-y-6">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">¿Qué necesitas calcular?</h2>
-        <p className="text-gray-600">Selecciona la calculadora que mejor se adapte a tu situación:</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-        {tableOptions.map((option) => (
-          <div
-            key={option.value}
-            onClick={() => setSelectedTable(option.value)}
-            className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#f8b133] hover:shadow-lg transition-all duration-200 group h-full"
-          >
-                        <div className="text-center h-full grid grid-rows-[auto_auto_auto_auto] gap-4">
-              <div className="flex justify-center">{option.icon}</div>
-              <h3 className="font-bold text-lg text-gray-800 group-hover:text-[#f8b133]">
-                {option.label}
-              </h3>
-              <p className="text-gray-700 font-medium">{option.description}</p>
-              <div className="bg-blue-50 p-3 rounded-lg">
-                <p className="text-sm text-blue-800 font-medium">{option.useCase}</p>
-              </div>
-            </div>
+  // Renderizado de tabs
+  const renderTabs = () => (
+    <div className="flex flex-col md:flex-row justify-center border-b border-gray-200 mb-4 gap-2 md:gap-2">
+      {tabOptions.map((tab, idx) => (
+        <button
+          key={tab.value}
+          onClick={() => setSelectedTab(tab.value)}
+          className={`flex items-center justify-center w-full md:w-56 px-5 py-2 font-medium text-sm focus:outline-none transition-colors duration-200 rounded-t-lg md:rounded-t-lg md:border-b-4 border-l-4 md:border-l-0 -mb-px md:-mb-px whitespace-nowrap ${
+            selectedTab === tab.value
+              ? 'border-[#f8b133] text-[#f8b133] bg-white shadow-lg'
+              : 'border-transparent text-gray-600 hover:text-[#f8b133] hover:bg-gray-50'
+          }`}
+          style={{
+            boxShadow: selectedTab === tab.value
+              ? (window.innerWidth < 768
+                  ? '4px 0 16px 0 rgba(248,177,51,0.18)'
+                  : '0 -4px 16px 0 rgba(248,177,51,0.18)')
+              : undefined
+          }}
+          type="button"
+        >
+          {tabIcons[tab.value as keyof typeof tabIcons]}
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  );
+
+  // Renderizado de descripciones siempre visible
+  const renderDescriptions = () => (
+    <div className="mb-6 bg-white border border-gray-200 rounded-lg overflow-hidden">
+      <div className="flex flex-col divide-y divide-gray-100">
+        {tabOptions.map((option) => (
+          <div key={option.value} className="flex flex-col gap-0.5 px-4 py-2">
+            <span className="font-bold text-gray-800 text-sm md:text-base">{option.label}</span>
+            <span className="text-gray-500 text-xs md:text-sm leading-tight">{option.description}</span>
+            <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-800 text-xs px-2 py-0.5 rounded justify-start">
+              <span>💡</span>
+              <span>{option.useCase.replace('💡 ', '')}</span>
+            </span>
           </div>
         ))}
       </div>
     </div>
   );
 
-  const renderSelectedTable = () => {
-    if (!selectedTable) {
-      return renderTableSelection();
-    }
-
-    switch (selectedTable) {
+  // Renderizado de la calculadora activa
+  const renderActiveCalculator = () => {
+    switch (selectedTab) {
       case 'tabla1':
         return renderTable1();
       case 'tabla2':
@@ -111,7 +129,7 @@ export function SteelCalculator() {
       case 'tabla3':
         return renderTable3();
       default:
-        return renderTableSelection();
+        return null;
     }
   };
 
@@ -163,11 +181,6 @@ export function SteelCalculator() {
         >
           <RotateCcw size={16} />
           Resetear
-        </Button>
-      </div>
-      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
-        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
-          Cambiar tabla
         </Button>
       </div>
     </div>
@@ -227,11 +240,6 @@ export function SteelCalculator() {
           Resetear
         </Button>
       </div>
-      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
-        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
-          Cambiar tabla
-        </Button>
-      </div>
     </div>
   );
 
@@ -240,9 +248,12 @@ export function SteelCalculator() {
       {/* Selección de barras */}
       <div className="space-y-3">
         <h3 className="font-semibold text-gray-800">1. Seleccionar Barras y Cantidades:</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4">
           {rebarSpecs.map((spec) => (
-            <div key={spec.diameter} className="flex items-center space-x-3 p-3 border rounded">
+            <div
+              key={spec.diameter}
+              className="flex items-center space-x-2 md:space-x-3 p-2 md:p-3 border rounded"
+            >
               <input
                 type="checkbox"
                 id={`table3-check-${spec.diameter}`}
@@ -253,9 +264,9 @@ export function SteelCalculator() {
                     [spec.diameter.toString()]: e.target.checked
                   }
                 })}
-                className="w-4 h-4"
+                className="w-3 h-3 md:w-4 md:h-4"
               />
-              <Label htmlFor={`table3-check-${spec.diameter}`} className="flex-1">
+              <Label htmlFor={`table3-check-${spec.diameter}`} className="flex-1 text-sm md:text-base">
                 {spec.label}
               </Label>
               <Input
@@ -263,13 +274,13 @@ export function SteelCalculator() {
                 min="1"
                 step="1"
                 max="99"
-                value={inputData.table3.quantities[spec.diameter.toString()] === 1 ? "" : inputData.table3.quantities[spec.diameter.toString()]}
+                value={inputData.table3.quantities[spec.diameter.toString()] === 0 ? "" : inputData.table3.quantities[spec.diameter.toString()]}
                 onChange={(e) => {
                   const val = e.target.value;
                   updateTable3({
                     quantities: {
                       ...inputData.table3.quantities,
-                      [spec.diameter.toString()]: val === "" ? 1 : Number(val)
+                      [spec.diameter.toString()]: val === "" ? 0 : Number(val)
                     }
                   });
                 }}
@@ -283,7 +294,7 @@ export function SteelCalculator() {
                     });
                   }
                 }}
-                className="w-16"
+                className="w-12 md:w-16 text-sm md:text-base"
                 disabled={!inputData.table3.selectedBars[spec.diameter.toString()]}
               />
             </div>
@@ -362,11 +373,6 @@ export function SteelCalculator() {
           Resetear
         </Button>
       </div>
-      <div className="flex justify-center mb-4 md:justify-end md:mb-0">
-        <Button variant="outline" size="sm" onClick={() => setSelectedTable(null)}>
-          Cambiar tabla
-        </Button>
-      </div>
     </div>
   );
 
@@ -382,40 +388,15 @@ export function SteelCalculator() {
         </p>
       </div>
 
-      {/* Contenido Principal */}
-      {selectedTable ? (
-        <>
-          {/* Header de tabla seleccionada con botón para cambiar */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-            {/* Encabezado de cada calculadora */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-0">
-              <h2 className="text-lg font-bold text-gray-800 text-center md:text-left">
-                {tableOptions.find(option => option.value === selectedTable!)?.title}
-              </h2>
-            </div>
-            {renderSelectedTable()}
-          </div>
-        </>
-      ) : (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-          {renderSelectedTable()}
-        </div>
-      )}
+      {/* Descripciones siempre visibles */}
+      {renderDescriptions()}
 
-      {/* Información adicional */}
-      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-        <h3 className="font-semibold text-gray-800 mb-3">Especificaciones de Barras de Acero:</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {rebarSpecs.map((spec) => (
-            <div key={spec.diameter} className="text-center">
-              <div className="font-semibold text-gray-700">{spec.label}</div>
-              <div className="text-sm text-gray-600">
-                Área: {spec.area.toFixed(2)} {DEFAULT_UNITS.AREA}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Tabs y calculadora activa */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+        {renderTabs()}
+        <div className="mt-6">{renderActiveCalculator()}</div>
       </div>
+
     </div>
   );
 } 
