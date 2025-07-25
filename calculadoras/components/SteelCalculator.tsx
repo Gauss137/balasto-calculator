@@ -112,10 +112,7 @@ export function SteelCalculator() {
           <div key={option.value} className="flex flex-col gap-0.5 px-4 py-2">
             <span className="font-bold text-gray-800 text-sm md:text-base">{option.label}</span>
             <span className="text-gray-500 text-xs md:text-sm leading-tight">{option.description}</span>
-            <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-800 text-xs px-2 py-0.5 rounded justify-start">
-              <span>💡</span>
-              <span>{option.useCase.replace('💡 ', '')}</span>
-            </span>
+            <span className="text-xs md:text-sm text-gray-600 mt-1">{option.useCase.replace('💡 ', '')}</span>
           </div>
         ))}
       </div>
