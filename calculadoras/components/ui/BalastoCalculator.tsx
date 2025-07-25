@@ -26,7 +26,10 @@ export function BalastoCalculator() {
      const [kUsuario, setKUsuario] = useState("");
        const [porcentajeGranular, setPorcentajeGranular] = useState("50");
      // Estado para mostrar/ocultar tablas
-   const [mostrarTablas, setMostrarTablas] = useState(false);
+     const [mostrarTablas, setMostrarTablas] = useState(false);
+     // Estado para cada tabla individual
+     const [mostrarTablaReferencia, setMostrarTablaReferencia] = useState(false);
+     const [mostrarTablaAutores, setMostrarTablaAutores] = useState(false);
 
   // Manejar cambio de tipo de losa
   const handleTipoLosaChange = (nuevoTipo: string) => {
@@ -147,78 +150,109 @@ export function BalastoCalculator() {
        });
    };
 
-     const renderTablaReferencia = () => {
-     return (
-       <div className="text-sm text-gray-600 space-y-2">
-         <p className="font-semibold">Valores de K30 propuestos por Terzaghi para placa de 30x30 cm</p>
-         <table className="table-auto w-full border text-xs">
-           <thead>
-             <tr className="bg-gray-100">
-               <th className="border px-2 py-1">Clases de suelo</th>
-               <th className="border px-2 py-1">Coeficiente de balasto (MN/m³)</th>
-               <th className="border px-2 py-1">Coeficiente de balasto (kp/cm³)</th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena seca o húmeda</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Suelta</td>
-               <td className="border px-2 py-1">8 - 25</td>
-               <td className="border px-2 py-1">0.8 - 2.5</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Media</td>
-               <td className="border px-2 py-1">25 - 125</td>
-               <td className="border px-2 py-1">2.5 - 12.7</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Densa</td>
-               <td className="border px-2 py-1">125 - 375</td>
-               <td className="border px-2 py-1">12.7 - 38.2</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena sumergida</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Suelta</td>
-               <td className="border px-2 py-1">10 - 15</td>
-               <td className="border px-2 py-1">1.0 - 1.5</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Media</td>
-               <td className="border px-2 py-1">35 - 40</td>
-               <td className="border px-2 py-1">3.6 - 4.1</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Densa</td>
-               <td className="border px-2 py-1">130 - 150</td>
-               <td className="border px-2 py-1">13.3 - 15.3</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 font-semibold" colSpan={3}>Arcilla</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Rígida</td>
-               <td className="border px-2 py-1">10 - 25</td>
-               <td className="border px-2 py-1">1.0 - 2.5</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Muy rígida</td>
-               <td className="border px-2 py-1">25 - 50</td>
-               <td className="border px-2 py-1">2.5 - 5.1</td>
-             </tr>
-             <tr>
-               <td className="border px-2 py-1 pl-4">- Dura</td>
-               <td className="border px-2 py-1">&gt; 50</td>
-               <td className="border px-2 py-1">&gt; 5.1</td>
-             </tr>
-           </tbody>
-         </table>
-       </div>
+     // Encabezados para ambas tablas
+     const TableHeader = () => (
+       <thead>
+         <tr className="bg-gray-100">
+           <th className="border px-2 py-1 align-middle text-center whitespace-normal w-1/3 break-words text-xs">Clases de suelo</th>
+           <th className="border px-2 py-1 align-middle text-center whitespace-normal w-1/3 break-words text-xs">
+             Coeficiente de balasto<br />(MN/m³)
+           </th>
+           <th className="border px-2 py-1 align-middle text-center whitespace-normal w-1/3 break-words text-xs">
+             Coeficiente de balasto<br />(kp/cm³)
+           </th>
+         </tr>
+       </thead>
      );
-   };
+
+     const renderTablaReferencia = () => {
+       return (
+         <div className="text-sm text-gray-600 space-y-2">
+           <table className="table-auto w-full border text-xs">
+             {TableHeader()}
+             <tbody>
+               <tr>
+                 <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena seca o húmeda</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Suelta</td>
+                 <td className="border px-2 py-1">8 - 25</td>
+                 <td className="border px-2 py-1">0.8 - 2.5</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Media</td>
+                 <td className="border px-2 py-1">25 - 125</td>
+                 <td className="border px-2 py-1">2.5 - 12.7</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Densa</td>
+                 <td className="border px-2 py-1">125 - 375</td>
+                 <td className="border px-2 py-1">12.7 - 38.2</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 font-semibold" colSpan={3}>Arena sumergida</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Suelta</td>
+                 <td className="border px-2 py-1">10 - 15</td>
+                 <td className="border px-2 py-1">1.0 - 1.5</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Media</td>
+                 <td className="border px-2 py-1">35 - 40</td>
+                 <td className="border px-2 py-1">3.6 - 4.1</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Densa</td>
+                 <td className="border px-2 py-1">130 - 150</td>
+                 <td className="border px-2 py-1">13.3 - 15.3</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 font-semibold" colSpan={3}>Arcilla</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Rígida</td>
+                 <td className="border px-2 py-1">10 - 25</td>
+                 <td className="border px-2 py-1">1.0 - 2.5</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Muy rígida</td>
+                 <td className="border px-2 py-1">25 - 50</td>
+                 <td className="border px-2 py-1">2.5 - 5.1</td>
+               </tr>
+               <tr>
+                 <td className="border px-2 py-1 pl-4 break-words text-xs">Dura</td>
+                 <td className="border px-2 py-1">&gt; 50</td>
+                 <td className="border px-2 py-1">&gt; 5.1</td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+       );
+     };
+
+     const renderTablaAutores = () => {
+       return (
+         <div className="text-sm text-gray-600 space-y-2 mt-6">
+           <table className="table-auto w-full border text-xs">
+             {TableHeader()}
+             <tbody>
+               <tr><td className="border px-2 py-1">Arena fina de playa</td><td className="border px-2 py-1">10 - 15</td><td className="border px-2 py-1">1.0 - 1.5</td></tr>
+               <tr><td className="border px-2 py-1">Arena floja, seca o húmeda</td><td className="border px-2 py-1">10 - 29</td><td className="border px-2 py-1">1 - 3</td></tr>
+               <tr><td className="border px-2 py-1">Arena media, seca o húmeda</td><td className="border px-2 py-1">29 - 88</td><td className="border px-2 py-1">3 - 9</td></tr>
+               <tr><td className="border px-2 py-1">Arena compacta, seca o húmeda</td><td className="border px-2 py-1">88 - 196</td><td className="border px-2 py-1">9 - 20</td></tr>
+               <tr><td className="border px-2 py-1">Gravilla arenosa floja</td><td className="border px-2 py-1">39 - 78</td><td className="border px-2 py-1">4 - 8</td></tr>
+               <tr><td className="border px-2 py-1">Gravilla arenosa compacta</td><td className="border px-2 py-1">118 - 245</td><td className="border px-2 py-1">12 - 25</td></tr>
+               <tr><td className="border px-2 py-1">Grava arenosa floja</td><td className="border px-2 py-1">69 - 118</td><td className="border px-2 py-1">7 - 12</td></tr>
+               <tr><td className="border px-2 py-1">Grava arenosa compacta</td><td className="border px-2 py-1">118 - 294</td><td className="border px-2 py-1">12 - 30</td></tr>
+               <tr><td className="border px-2 py-1">Margas arcillosas</td><td className="border px-2 py-1">196 - 392</td><td className="border px-2 py-1">20 - 40</td></tr>
+               <tr><td className="border px-2 py-1">Rocas blandas o algo alteradas</td><td className="border px-2 py-1">294 - 4903</td><td className="border px-2 py-1">30 - 500</td></tr>
+               <tr><td className="border px-2 py-1">Rocas sanas</td><td className="border px-2 py-1">7845 - 294200</td><td className="border px-2 py-1">800 - 30000</td></tr>
+             </tbody>
+           </table>
+         </div>
+       );
+     };
 
            return (
              <div className="max-w-3xl mx-auto space-y-6 px-4">
@@ -343,28 +377,44 @@ export function BalastoCalculator() {
        <div className="bg-gray-50 p-4 rounded-lg border">
          <div className="flex justify-between items-center mb-4">
            <h3 className="text-lg font-semibold text-gray-800">Coeficiente de balasto (k)</h3>
-                       <Button
+            <Button
               onClick={() => setMostrarTablas(!mostrarTablas)}
               variant="outline"
               size="sm"
               className="text-xs"
             >
-              {mostrarTablas ? "Ocultar tabla" : "Mostrar tabla"}
+              {mostrarTablas ? "Ocultar tablas" : "Mostrar tablas"}
             </Button>
          </div>
 
          {/* Tablas de referencia - condicionales */}
          {mostrarTablas && (
-           <div className="mb-4 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                           <div className="flex items-center gap-2 mb-3">
-                <span className="text-lg">📋</span>
-                <p className="text-sm text-yellow-800 font-medium">
-                  Tabla de referencia para selección del coeficiente k
-                </p>
+           <div className="mb-4 bg-yellow-50 p-2 rounded-lg border border-yellow-200 space-y-2">
+              <div>
+                <button
+                  className="flex items-center justify-between w-full text-yellow-800 font-medium text-xs py-0.5 focus:outline-none"
+                  onClick={() => setMostrarTablaReferencia((v) => !v)}
+                  type="button"
+                >
+                  <span className="text-lg flex-shrink-0">📋</span>
+                  <span className="flex-1 text-center text-sm">Tabla de referencia Terzaghi</span>
+                  <span className="flex-shrink-0">{mostrarTablaReferencia ? "▲" : "▼"}</span>
+                </button>
+                {mostrarTablaReferencia && renderTablaReferencia()}
               </div>
-              
-              {renderTablaReferencia()}
-           </div>
+              <div>
+                <button
+                  className="flex items-center justify-between w-full text-yellow-800 font-medium text-xs py-0.5 focus:outline-none"
+                  onClick={() => setMostrarTablaAutores((v) => !v)}
+                  type="button"
+                >
+                  <span className="text-lg flex-shrink-0">📋</span>
+                  <span className="flex-1 text-center text-sm">Tabla de referencia diversos autores</span>
+                  <span className="flex-shrink-0">{mostrarTablaAutores ? "▲" : "▼"}</span>
+                </button>
+                {mostrarTablaAutores && renderTablaAutores()}
+              </div>
+            </div>
          )}
          
                              <div className="space-y-4">
