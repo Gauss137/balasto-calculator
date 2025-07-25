@@ -27,6 +27,9 @@ export function SteelCalculator() {
   } = useSteelCalculator();
 
   const [selectedTab, setSelectedTab] = useState<string>('tabla1');
+  // Estado para saber si estamos en cliente
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => { setIsClient(true); }, []);
 
   // Auto-calcular cuando cambien los datos
   useEffect(() => {
@@ -85,13 +88,13 @@ export function SteelCalculator() {
               ? 'border-[#f8b133] text-[#f8b133] bg-white shadow-lg'
               : 'border-transparent text-gray-600 hover:text-[#f8b133] hover:bg-gray-50'
           }`}
-          style={{
-            boxShadow: selectedTab === tab.value
+          style={
+            selectedTab === tab.value && isClient
               ? (window.innerWidth < 768
-                  ? '4px 0 16px 0 rgba(248,177,51,0.18)'
-                  : '0 -4px 16px 0 rgba(248,177,51,0.18)')
+                  ? { boxShadow: '4px 0 16px 0 rgba(248,177,51,0.18)' }
+                  : { boxShadow: '0 -4px 16px 0 rgba(248,177,51,0.18)' })
               : undefined
-          }}
+          }
           type="button"
         >
           {tabIcons[tab.value as keyof typeof tabIcons]}
