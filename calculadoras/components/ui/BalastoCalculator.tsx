@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { ToggleSection } from "@/components/ui/ToggleSection";
 
 export function BalastoCalculator() {
    const [tipoLosa, setTipoLosa] = useState("Cuadrada");
@@ -30,6 +31,8 @@ export function BalastoCalculator() {
      // Estado para cada tabla individual
      const [mostrarTablaReferencia, setMostrarTablaReferencia] = useState(false);
      const [mostrarTablaAutores, setMostrarTablaAutores] = useState(false);
+     // Estado para mostrar/ocultar fórmulas
+     const [mostrarFormulas, setMostrarFormulas] = useState(false);
 
   // Manejar cambio de tipo de losa
   const handleTipoLosaChange = (nuevoTipo: string) => {
@@ -259,7 +262,8 @@ export function BalastoCalculator() {
          {/* Header */}
          <div className="text-center">
            <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
-             Adaptación Del Coeficiente De Balasto De Una Placa De Carga De 30cmx30cm Para Emplearlo En El Método De Diseño Flexible Aproximado De Losas
+               <span className="block">Adaptación del coeficiente de balasto</span>
+               <span className="block">para diseño flexible de losas</span>
            </h1>
          </div>
       
@@ -492,6 +496,62 @@ export function BalastoCalculator() {
            </div>
          )}
        </div>
+
+      {/* Sección: Fórmulas utilizadas (colapsable) */}
+      <ToggleSection
+        isOpen={mostrarFormulas}
+        onToggle={() => setMostrarFormulas((v) => !v)}
+        title="Fórmulas utilizadas"
+      >
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">Módulo base para suelo granular:</h3>
+            <div className="bg-gray-50 p-3 rounded border">
+              <div className="font-mono text-sm">
+                Cuadrada:  (((L*100)+30)<sup>2</sup> / (2*100*L)<sup>2</sup>) * k<br/>
+                Rectangular: (2/3) * [(((B*100)+30)<sup>2</sup> / (2*100*B)<sup>2</sup>) * k] * (1 + (B/(2*L)))
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">Módulo base para suelo cohesivo:</h3>
+            <div className="bg-gray-50 p-3 rounded border">
+              <div className="font-mono text-sm">
+                (((n+0.5)*30) / (1.5*n*100*d)) * k<br/>
+                donde n = L/B (rectangular) o 1 (cuadrada), d = L (cuadrada) o B (rectangular)
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">Módulo final granular:</h3>
+            <div className="bg-gray-50 p-3 rounded border">
+              <div className="font-mono text-sm">
+                Cuadrada:  k * ((L+0.3)/(2*L))<sup>2</sup><br/>
+                Rectangular: k * ((n+0.5)/(1.5*n)) * ((B+0.3)/(2*B))<sup>2</sup>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">Módulo final cohesivo:</h3>
+            <div className="bg-gray-50 p-3 rounded border">
+              <div className="font-mono text-sm">
+                Cuadrada:  k * (0.3/L)<br/>
+                Rectangular: k * ((n+0.5)/(1.5*n)) * (0.3/B)
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">Cálculo final del coeficiente de balasto:</h3>
+            <div className="bg-gray-50 p-3 rounded border">
+              <div className="font-mono text-sm">
+                Granular: módulo final granular<br/>
+                Cohesivo: módulo final cohesivo<br/>
+                Mixto: (pGranular/100) * módulo final granular + (pCohesivo/100) * módulo final cohesivo
+              </div>
+            </div>
+          </div>
+        </div>
+      </ToggleSection>
     </div>
   );
 }
