@@ -237,7 +237,6 @@ export function AsSlabCalculator() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6 px-4">
-
       <section className="bg-gray-50 p-4 rounded-lg border space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">
           Datos de entrada
