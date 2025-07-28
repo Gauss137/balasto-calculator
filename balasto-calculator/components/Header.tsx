@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_CONFIG, EXTERNAL_LINKS, ROUTES } from '@/lib/constants';
-import { BeamDropdown } from './BeamDropdown';
 import { MobileMenu } from './MobileMenu';
 import { usePathname } from 'next/navigation';
 
@@ -52,3 +51,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;

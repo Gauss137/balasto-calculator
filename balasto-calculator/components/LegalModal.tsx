@@ -54,4 +54,6 @@ export function LegalModal({ isOpen, onClose }: ModalProps) {
       </div>
     </div>
   );
-} 
+}
+
+export default LegalModal; 

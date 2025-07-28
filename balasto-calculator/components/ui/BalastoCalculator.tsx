@@ -505,3 +505,5 @@ export function BalastoCalculator() {
     </div>
   );
 }
+
+export default BalastoCalculator;
