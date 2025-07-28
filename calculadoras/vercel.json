@@ -1,5 +1,4 @@
 {
-  "name": "steel-calculator",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
@@ -27,11 +26,69 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/steel-calculator"
+      "destination": "/steel-calculator",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "steel-calculator"
+        }
+      ]
     },
     {
       "source": "/(.*)",
-      "destination": "/steel-calculator"
+      "destination": "/steel-calculator",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "steel-calculator"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "/balasto-calculator",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "balasto-calculator"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/balasto-calculator",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "balasto-calculator"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "/vigas/simplemente-apoyadas/carga-uniforme",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "beam-calculator"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/vigas/simplemente-apoyadas/carga-uniforme",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-project-name",
+          "value": "beam-calculator"
+        }
+      ]
     }
   ]
 } 
