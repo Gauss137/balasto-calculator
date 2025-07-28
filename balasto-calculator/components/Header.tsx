@@ -21,7 +21,7 @@ export function Header() {
               className="h-12 w-auto object-contain"
               priority
             /> */}
-            <span className="text-xl font-bold text-gray-900">{APP_CONFIG.COMPANY}</span>
+            <span className="text-xl font-bold text-gray-900">{APP_CONFIG.company}</span>
           </a>
         </div>
         
