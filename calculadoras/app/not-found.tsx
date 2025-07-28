@@ -15,12 +15,14 @@ export default function NotFound() {
         </div>
         
         <div className="space-y-4">
-          <Link
-            href="/"
+          <a
+            href="https://www.cswingenieriacivil.com/herramientas"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-[#f8b133] hover:bg-[#e6a030] text-white font-medium py-3 px-6 rounded-lg transition-colors"
           >
             Volver al inicio
-          </Link>
+          </a>
           
           <div className="text-sm text-gray-500">
             <p>¿Necesitas ayuda?</p>

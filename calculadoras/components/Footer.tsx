@@ -19,7 +19,7 @@ export function Footer() {
       <footer className="w-full bg-white py-4 mt-8 border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-6 text-center text-sm text-gray-600">
           <p className="mt-4 text-xs text-gray-500">
-            Todo el contenido de esta página es de acceso libre y gratuito. Si las herramientas, artículos o recursos ofrecidos resultan útiles, es posible colaborar con una pequeña contribución voluntaria a través de los siguientes medios. Estos aportes ayudan a mantener y mejorar el desarrollo de nuevos contenidos abiertos para la comunidad técnica.
+            Todo el contenido de esta página es de acceso libre y gratuito. Si los recursos ofrecidos resultan útiles, es posible colaborar con una pequeña contribución voluntaria a través de los siguientes medios. Estos aportes ayudan a mantener y mejorar el desarrollo de nuevos contenidos abiertos para la comunidad.
           </p>
           
           <div className="flex justify-center items-center space-x-4 mt-2">
