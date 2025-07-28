@@ -1,4 +1,13 @@
 // Configuración de Google Analytics y otras herramientas de SEO
+
+// Declaraciones de tipos para Google Analytics
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 export const ANALYTICS_CONFIG = {
   // Google Analytics 4
   GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '',
@@ -31,13 +40,22 @@ export const initGA = () => {
   }
 };
 
-// Función para trackear eventos personalizados
+// Función para enviar eventos personalizados
 export const trackEvent = (action: string, category: string, label?: string, value?: number) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', action, {
       event_category: category,
       event_label: label,
-      value: value,
+      value: value
+    });
+  }
+};
+
+// Función para trackear páginas vistas
+export const trackPageView = (url: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', ANALYTICS_CONFIG.GA_MEASUREMENT_ID, {
+      page_path: url
     });
   }
 }; 
