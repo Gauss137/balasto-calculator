@@ -37,7 +37,7 @@ export function LegalModal({ isOpen, onClose }: ModalProps) {
             </p>
             
             <p>
-              <strong>{APP_CONFIG.COMPANY}</strong> no asume responsabilidad por errores, omisiones ni 
+              <strong>{APP_CONFIG.company}</strong> no asume responsabilidad por errores, omisiones ni 
               consecuencias derivadas de su uso.
             </p>
           </div>

@@ -51,7 +51,7 @@ export function Footer() {
           </div>
           
           <p className="font-semibold mt-4">
-            {APP_CONFIG.COPYRIGHT_MESSAGE} – {currentYear}
+            {APP_CONFIG.copyrightMessage} – {currentYear}
           </p>
           
           <div className="flex justify-center items-center space-x-4 mt-4">
