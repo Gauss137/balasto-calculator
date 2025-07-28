@@ -60,8 +60,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={poppins.variable} suppressHydrationWarning>
-      <head>
-        {/* Google Analytics */}
+      <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 py-8">
+          {children}
+        </main>
+        <Footer />
+        
+        {/* Google Analytics - Movido al final del body */}
         {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && (
           <>
             <script
@@ -80,13 +86,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
           </>
         )}
-      </head>
-      <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1 py-8">
-          {children}
-        </main>
-        <Footer />
       </body>
     </html>
   );

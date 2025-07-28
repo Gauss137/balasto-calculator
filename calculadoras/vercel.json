@@ -1,20 +1,9 @@
 {
-  "framework": "nextjs",
   "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
   "outputDirectory": ".next",
-  "public": false,
-  "rewrites": [
-    {
-      "source": "/beam-calculator",
-      "destination": "/calculadoras/vigas/simplemente-apoyadas/carga-uniforme"
-    },
-    {
-      "source": "/viga-simplemente-apoyada-carga-uniforme",
-      "destination": "/calculadoras/vigas/simplemente-apoyadas/carga-uniforme"
-    }
-  ],
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
   "headers": [
     {
       "source": "/(.*)",
@@ -33,10 +22,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "app/**/*.{js,ts,jsx,tsx}": {
-      "maxDuration": 30
-    }
-  }
+  ]
 } 
