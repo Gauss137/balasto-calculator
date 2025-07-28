@@ -8,15 +8,6 @@ import { usePathname } from 'next/navigation';
 
 export function Header() {
   const pathname = usePathname();
-  // Rutas donde NO quieres mostrar el header
-  const hideHeaderRoutes = [
-    '/steel-calculator',
-    '/balasto-calculator',
-    '/vigas/simplemente-apoyadas/carga-uniforme'
-  ];
-  if (hideHeaderRoutes.includes(pathname)) {
-    return null;
-  }
   return (
     <header className="w-full bg-white shadow-sm border-b border-gray-200">
       <nav className="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
