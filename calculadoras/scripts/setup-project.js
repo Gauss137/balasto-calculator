@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Obtener el nombre del proyecto desde variables de entorno
-const projectName = process.env.VERCEL_PROJECT_NAME || process.env.NEXT_PUBLIC_PROJECT_NAME;
+const projectName = process.env.VERCEL_PROJECT_NAME || process.env.NEXT_PUBLIC_PROJECT_NAME || process.env.VERCEL_GIT_COMMIT_REF;
 
 console.log(`Configurando proyecto: ${projectName}`);
 
