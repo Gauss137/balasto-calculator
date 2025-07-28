@@ -1,4 +1,5 @@
 {
+  "name": "steel-calculator",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
@@ -23,45 +24,10 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/steel-calculator",
-      "destination": "/steel-calculator",
-      "permanent": true
-    },
-    {
-      "source": "/balasto-calculator", 
-      "destination": "/balasto-calculator",
-      "permanent": true
-    },
-    {
-      "source": "/beam-calculator",
-      "destination": "/vigas/simplemente-apoyadas/carga-uniforme",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
-      "source": "/steel",
+      "source": "/(.*)",
       "destination": "/steel-calculator"
-    },
-    {
-      "source": "/balasto",
-      "destination": "/balasto-calculator"
-    },
-    {
-      "source": "/beam",
-      "destination": "/vigas/simplemente-apoyadas/carga-uniforme"
-    },
-    {
-      "source": "/",
-      "destination": "/steel-calculator",
-      "has": [
-        {
-          "type": "host",
-          "value": "steelcalculator.cswingenieriacivil.com"
-        }
-      ]
     }
   ]
 } 
