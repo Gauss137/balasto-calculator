@@ -12,7 +12,7 @@ export function Header() {
     <header className="w-full bg-white shadow-sm border-b border-gray-200">
       <nav className="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
-          <Link href={ROUTES.HOME} className="flex items-center">
+          <a href="https://www.cswingenieriacivil.com/herramientas" className="flex items-center" target="_blank" rel="noopener noreferrer">
             {/* Logo temporalmente oculto mientras se actualiza el archivo SVG */}
             {/* <Image
               src="/negrologotij webpage.svg"
@@ -23,7 +23,7 @@ export function Header() {
               priority
             /> */}
             <span className="text-xl font-bold text-gray-900">{APP_CONFIG.COMPANY}</span>
-          </Link>
+          </a>
         </div>
         
         {/* Desktop Navigation */}
