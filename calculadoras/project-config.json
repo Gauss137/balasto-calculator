@@ -1,0 +1,5 @@
+{
+  "redirect": "/steel-calculator",
+  "description": "Calculadora de Acero",
+  "vercelConfig": "vercel-steel-only.json"
+}

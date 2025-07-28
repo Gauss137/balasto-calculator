@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/setup-project.js && next build",
+    "build:steel": "node scripts/setup-steel.js && next build",
+    "build:balasto": "node scripts/setup-balasto.js && next build",
+    "build:beam": "node scripts/setup-beam.js && next build",
     "start": "next start",
     "lint": "next lint",
     "generate:calculator": "node scripts/generate-calculator.js",
