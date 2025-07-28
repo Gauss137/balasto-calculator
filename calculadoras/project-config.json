@@ -1,5 +1,8 @@
 {
+  "projectName": "steel-calculator",
   "redirect": "/steel-calculator",
   "description": "Calculadora de Acero",
-  "vercelConfig": "vercel-steel-only.json"
+  "vercelConfig": "vercel-steel-only.json",
+  "timestamp": "2025-07-28T15:40:18.349Z",
+  "environment": {}
 }
