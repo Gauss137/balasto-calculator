@@ -26,6 +26,10 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/balasto-calculator"
+    },
+    {
       "source": "/(.*)",
       "destination": "/balasto-calculator"
     }
