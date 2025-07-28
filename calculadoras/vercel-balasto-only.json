@@ -1,4 +1,5 @@
 {
+  "name": "balasto-calculator",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
@@ -26,19 +27,23 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/steel-calculator"
-    },
-    {
-      "source": "/steel-calculator",
-      "destination": "/steel-calculator"
+      "destination": "/balasto-calculator"
     },
     {
       "source": "/balasto-calculator",
       "destination": "/balasto-calculator"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/steel-calculator",
+      "destination": "/balasto-calculator",
+      "permanent": false
     },
     {
       "source": "/vigas/(.*)",
-      "destination": "/vigas/$1"
+      "destination": "/balasto-calculator",
+      "permanent": false
     }
   ]
 } 

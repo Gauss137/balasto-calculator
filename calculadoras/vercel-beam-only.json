@@ -1,4 +1,5 @@
 {
+  "name": "beam-calculator",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
@@ -26,19 +27,23 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/steel-calculator"
-    },
-    {
-      "source": "/steel-calculator",
-      "destination": "/steel-calculator"
-    },
-    {
-      "source": "/balasto-calculator",
-      "destination": "/balasto-calculator"
+      "destination": "/vigas/simplemente-apoyadas/carga-uniforme"
     },
     {
       "source": "/vigas/(.*)",
       "destination": "/vigas/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/steel-calculator",
+      "destination": "/vigas/simplemente-apoyadas/carga-uniforme",
+      "permanent": false
+    },
+    {
+      "source": "/balasto-calculator",
+      "destination": "/vigas/simplemente-apoyadas/carga-uniforme",
+      "permanent": false
     }
   ]
 } 
