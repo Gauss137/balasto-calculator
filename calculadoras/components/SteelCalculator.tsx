@@ -313,7 +313,7 @@ export function SteelCalculator() {
               type="number"
               step="0.01"
               min="0"
-              value={inputData.table3.steelRatio === 0 ? "" : inputData.table3.steelRatio}
+              value={inputData.table3.steelRatio === 0 || inputData.table3.steelRatio === undefined ? "" : inputData.table3.steelRatio}
               onChange={(e) => updateTable3({ steelRatio: e.target.value === "" ? 0 : Number(e.target.value), spacing: undefined })}
               onBlur={(e) => {
                 if (e.target.value === "" || isNaN(Number(e.target.value)) || Number(e.target.value) < 0) {
@@ -342,7 +342,7 @@ export function SteelCalculator() {
               type="number"
               step="0.1"
               min="0"
-              value={inputData.table3.spacing === 0 ? "" : inputData.table3.spacing}
+              value={inputData.table3.spacing === 0 || inputData.table3.spacing === undefined ? "" : inputData.table3.spacing}
               onChange={(e) => updateTable3({ spacing: e.target.value === "" ? 0 : Number(e.target.value), steelRatio: undefined })}
               onBlur={(e) => {
                 if (e.target.value === "" || isNaN(Number(e.target.value)) || Number(e.target.value) < 0) {

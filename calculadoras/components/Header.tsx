@@ -28,19 +28,14 @@ export function Header() {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <BeamDropdown />
-          <Link 
-            href={ROUTES.STEEL_CALCULATOR} 
+          <a 
+            href="https://www.cswingenieriacivil.com/herramientas"
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="text-gray-700 hover:text-[#f1d475] transition-colors"
           >
-            Acero
-          </Link>
-          <Link 
-            href={ROUTES.BALASTO_CALCULATOR} 
-            className="text-gray-700 hover:text-[#f1d475] transition-colors"
-          >
-            Balasto
-          </Link>
+            Más
+          </a>
           <a 
             href={EXTERNAL_LINKS.CONTACT}
             target="_blank" 
