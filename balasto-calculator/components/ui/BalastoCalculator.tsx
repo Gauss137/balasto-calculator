@@ -257,7 +257,7 @@ export function BalastoCalculator() {
      };
 
                return (
-      <div className="max-w-3xl mx-auto space-y-6 px-4 py-8">
+      <div className="max-w-3xl mx-auto space-y-6 px-4 py-4">
                    {/* Header */}
           <div className="text-center">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">

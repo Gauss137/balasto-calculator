@@ -109,3 +109,37 @@
     overflow-x: auto;
   }
 }
+
+/* AdSense Styles */
+.ad-container {
+  text-align: center;
+  margin: 1rem 0;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ad-container:hover {
+  border-color: #dee2e6;
+}
+
+/* AdSense responsive adjustments */
+@media (max-width: 768px) {
+  .ad-container {
+    margin: 0.5rem 0;
+    min-height: 60px;
+  }
+}
+
+/* AdSense loading state */
+.ad-container:empty::before {
+  content: "Anuncio";
+  color: #6c757d;
+  font-size: 0.875rem;
+  font-style: italic;
+}

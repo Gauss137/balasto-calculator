@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import BalastoCalculator from '../../components/ui/BalastoCalculator';
+import AdSense from '../../components/AdSense';
 
 export const metadata: Metadata = {
   title: 'Calculadora de Coeficiente de Balasto - CSW Ingeniería Civil',
@@ -25,8 +26,24 @@ export const metadata: Metadata = {
 
 export default function BalastoCalculatorPage() {
   return (
-    <div className="min-h-screen bg-gray-50 pt-4">
+    <div className="bg-gray-50 pt-4 pb-4">
+      {/* AdSense Banner - Top */}
+      <div className="max-w-4xl mx-auto px-6 mb-4">
+        <AdSense 
+          adSlot="1234567890" 
+          className="mb-4"
+        />
+      </div>
+      
       <BalastoCalculator />
+      
+      {/* AdSense Banner - Bottom */}
+      <div className="max-w-4xl mx-auto px-6 mt-4">
+        <AdSense 
+          adSlot="0987654321" 
+          className="mt-2"
+        />
+      </div>
     </div>
   );
 } 
