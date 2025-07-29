@@ -16,9 +16,9 @@ export function Footer() {
 
   return (
     <>
-      <footer className="w-full bg-white py-8 mt-8 border-t border-gray-100">
+      <footer className="w-full bg-gray-50 py-4 mt-4 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-6 text-center text-sm text-gray-600">
-          <p className="mt-4 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-gray-500">
             Todo el contenido de esta página es de acceso libre y gratuito. Si los recursos ofrecidos resultan útiles, es posible colaborar con una pequeña contribución voluntaria a través de los siguientes medios. Estos aportes ayudan a mantener y mejorar el desarrollo de nuevos contenidos abiertos para la comunidad.
           </p>
           
@@ -41,7 +41,7 @@ export function Footer() {
             </a>
           </div>
           
-          <div className="mt-3 border-t border-gray-100 pt-3">
+          <div className="mt-2 border-t border-gray-200 pt-2">
             <button
               onClick={openModal}
               className="text-xs text-gray-400 hover:text-gray-600 underline transition-colors"
@@ -50,11 +50,11 @@ export function Footer() {
             </button>
           </div>
           
-          <p className="font-semibold mt-4">
+          <p className="font-semibold mt-2">
             {APP_CONFIG.copyrightMessage} – {currentYear}
           </p>
           
-          <div className="flex justify-center items-center space-x-4 mt-4">
+          <div className="flex justify-center items-center space-x-4 mt-2">
             <a 
               href={EXTERNAL_LINKS.LINKEDIN}
               target="_blank" 
