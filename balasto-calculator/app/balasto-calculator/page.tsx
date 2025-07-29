@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function BalastoCalculatorPage() {
   return (
-    <div className="bg-gray-50 pt-4 pb-4">
+    <div className="pt-4 pb-4">
       {/* AdSense Banner - Top */}
       <div className="max-w-4xl mx-auto px-6 mb-4">
         <AdSense 
