@@ -257,7 +257,7 @@ export function BalastoCalculator() {
      };
 
                return (
-      <div className="max-w-3xl mx-auto space-y-6 px-4 py-4">
+      <div className="max-w-3xl mx-auto space-y-6 px-4 py-4 bg-white rounded-lg shadow-sm">
                    {/* Header */}
           <div className="text-center">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
@@ -274,7 +274,7 @@ export function BalastoCalculator() {
       
 
       {/* Sección: Geometría de la losa */}
-      <div className="bg-gray-50 p-4 rounded-lg border">
+      <div className="bg-white p-4 rounded-lg border">
         <h3 className="text-lg font-semibold mb-4 text-gray-800">Geometría de la losa</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -329,7 +329,7 @@ export function BalastoCalculator() {
       </div>
 
              {/* Sección: Tipo de suelo */}
-       <div className="bg-gray-50 p-4 rounded-lg border">
+       <div className="bg-white p-4 rounded-lg border">
          <h3 className="text-lg font-semibold mb-4 text-gray-800">Tipo de suelo</h3>
          
          <div className="max-w-md">
@@ -384,7 +384,7 @@ export function BalastoCalculator() {
        </div>
 
              {/* Sección: Valores de k */}
-       <div className="bg-gray-50 p-4 rounded-lg border">
+       <div className="bg-white p-4 rounded-lg border">
          <div className="flex justify-between items-center mb-4">
            <h3 className="text-lg font-semibold text-gray-800">Coeficiente de balasto (k)</h3>
             <Button
