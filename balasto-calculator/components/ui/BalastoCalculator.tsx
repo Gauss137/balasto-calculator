@@ -305,7 +305,9 @@ export function BalastoCalculator() {
            </div>
 
                        <div>
-              <Label htmlFor="ladoCorto">Lado corto (m)</Label>
+              <Label htmlFor="ladoCorto">
+              {tipoLosa === "Cuadrada" ? "Lado (m)" : "Lado corto (m)"}
+              </Label>
               <Input
                 id="ladoCorto"
                 type="number"

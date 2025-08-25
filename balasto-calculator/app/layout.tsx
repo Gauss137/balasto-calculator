@@ -65,31 +65,8 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        {/* Google AdSense Meta Tag */}
-        <meta name="google-adsense-account" content="ca-pub-8687657389733151" />
+
         
-        {/* Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `,
-          }}
-        />
-        
-        {/* Google AdSense Script */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8687657389733151"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col bg-gray-50">
