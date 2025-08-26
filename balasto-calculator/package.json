@@ -18,8 +18,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-katex": "^3.0.1",
-    "tailwind-merge": "^2.6.0",
-    "@csw/shared-components": "github:Gauss137/csw-shared-components#main"
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

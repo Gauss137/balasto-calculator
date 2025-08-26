@@ -4,3 +4,6 @@
 [submodule "steel-calculator/shared"]
 	path = steel-calculator/shared
 	url = https://github.com/Gauss137/csw-shared-components.git
+[submodule "balasto-calculator/shared"]
+	path = balasto-calculator/shared
+	url = https://github.com/Gauss137/csw-shared-components.git
