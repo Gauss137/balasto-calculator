@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { LegalModal } from './LegalModal';
-import { useModal } from '../hooks/useModal';
-import { APP_CONFIG, EXTERNAL_LINKS } from '../constants';
+import { useModal } from '../../hooks/useModal';
+import { APP_CONFIG, EXTERNAL_LINKS } from '../../lib/constants';
 import { SharedImage } from './SharedImage';
 
 export function Footer() {

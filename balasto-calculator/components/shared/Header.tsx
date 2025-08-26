@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { APP_CONFIG, EXTERNAL_LINKS, ROUTES } from '../constants';
+import { APP_CONFIG, EXTERNAL_LINKS, ROUTES } from '../../lib/constants';
 import { MobileMenu } from './MobileMenu';
 import { usePathname } from 'next/navigation';
 import { SharedImage } from './SharedImage';

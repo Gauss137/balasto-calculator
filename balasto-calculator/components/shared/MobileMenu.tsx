@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { EXTERNAL_LINKS } from '../constants';
+import { EXTERNAL_LINKS } from '../../lib/constants';
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
