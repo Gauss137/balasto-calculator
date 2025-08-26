@@ -93,3 +93,9 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Build artifacts
+**/.next/
+**/out/
+**/build/
+**/dist/

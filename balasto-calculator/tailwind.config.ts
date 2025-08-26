@@ -9,7 +9,7 @@ export default {
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
     "./types/**/*.{js,ts,jsx,tsx,mdx}",
-    // Removed "./shared/src/**/*.{js,ts,jsx,tsx,mdx}" - using local components
+    "./shared/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
