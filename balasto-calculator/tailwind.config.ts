@@ -9,7 +9,6 @@ export default {
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
     "./types/**/*.{js,ts,jsx,tsx,mdx}",
-    "./shared/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
