@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { Header } from '../shared/src/components/Header';
+import { Footer } from '../shared/src/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,38 +44,11 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col bg-gray-50">
-          {/* Header simple */}
-          <header className="bg-white shadow-sm border-b border-gray-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center py-4">
-                <div className="flex items-center">
-                  <h1 className="text-xl font-bold text-gray-900">CSW Ingeniería Civil</h1>
-                </div>
-                <nav className="hidden md:flex space-x-8">
-                  <a href="/" className="text-gray-500 hover:text-gray-900">Inicio</a>
-                  <a href="/armadura-flexion" className="text-gray-900 font-medium">Armadura a Flexión</a>
-                </nav>
-              </div>
-            </div>
-          </header>
-
+          <Header />
           <main className="flex-1">
             {children}
           </main>
-
-          {/* Footer simple */}
-          <footer className="bg-white border-t border-gray-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              <div className="text-center text-gray-500 text-sm">
-                <p>&copy; 2025 CSW Ingeniería Civil. Todos los derechos reservados.</p>
-                <p className="mt-2">
-                  <a href="https://cswingenieriacivil.com" className="text-blue-600 hover:text-blue-800">
-                    Visita nuestro sitio web
-                  </a>
-                </p>
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>
