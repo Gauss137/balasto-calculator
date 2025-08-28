@@ -222,7 +222,7 @@ export function AsSlabCalculator() {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
-          ARMADURA A FLEXIÓN EN LOSAS
+          Armadura a flexión en losas
         </h1>
         <p className="text-gray-600 mt-3 font-light">
           Calcula el área de acero necesaria para resistir momentos flectores en losas de hormigón armado
