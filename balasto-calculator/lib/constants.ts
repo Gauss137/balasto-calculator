@@ -26,7 +26,7 @@ export const ANALYTICS_CONFIG = {
 export const SOCIAL_CONFIG = {
   twitter: '@cswingenieria',
   facebook: 'cswingenieriacivil',
-  linkedin: 'csw-ingeniería-civil',
+  linkedin: 'cswingenieriacivil',
 };
 
 // Enlaces externos
@@ -38,10 +38,10 @@ export const EXTERNAL_LINKS = {
   about: 'https://www.cswingenieriacivil.com/nosotros',
   services: 'https://www.cswingenieriacivil.com/servicios',
   blog: 'https://www.cswingenieriacivil.com/blog',
-  linkedin: 'https://www.linkedin.com/company/csw-ingeniería-civil',
-  LINKEDIN: 'https://www.linkedin.com/company/csw-ingeniería-civil',
-  instagram: 'https://www.instagram.com/cswingenieriacivil',
-  INSTAGRAM: 'https://www.instagram.com/cswingenieriacivil',
+  linkedin: 'https://www.linkedin.com/company/cswingenieriacivil',
+  LINKEDIN: 'https://www.linkedin.com/company/cswingenieriacivil',
+  instagram: 'https://www.instagram.com/csw_ingenieriacivil',
+  INSTAGRAM: 'https://www.instagram.com/csw_ingenieriacivil',
   facebook: 'https://www.facebook.com/cswingenieriacivil',
   twitter: 'https://twitter.com/cswingenieria',
   youtube: 'https://www.youtube.com/@cswingenieriacivil',
