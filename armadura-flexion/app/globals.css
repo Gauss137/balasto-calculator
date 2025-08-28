@@ -25,7 +25,7 @@
   }
   
   .csw-button {
-    @apply bg-primary hover:bg-primary-hover text-white font-medium py-2 px-4 rounded-md transition-colors duration-200;
+    @apply bg-primary hover:bg-[#e6a030] text-white font-medium py-2 px-4 rounded-md transition-colors duration-200;
   }
   
   .csw-button-outline {

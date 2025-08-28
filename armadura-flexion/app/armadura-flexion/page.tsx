@@ -1,9 +1,9 @@
-import { ArmaduraFlexionCalculator } from '@/components/ArmaduraFlexionCalculator';
+import { AsSlabCalculator } from '@/components/AsSlabCalculator';
 
 export default function ArmaduraFlexionPage() {
   return (
     <div className="csw-container py-8">
-      <ArmaduraFlexionCalculator />
+      <AsSlabCalculator />
     </div>
   );
 }
