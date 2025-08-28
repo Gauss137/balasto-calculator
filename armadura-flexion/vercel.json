@@ -1,5 +1,4 @@
 {
-  "name": "armadura-flexion-calculator",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
@@ -34,8 +33,5 @@
       "source": "/",
       "destination": "/armadura-flexion"
     }
-  ],
-  "domains": [
-    "armadura-flexion.cswingenieriacivil.com"
   ]
 }
