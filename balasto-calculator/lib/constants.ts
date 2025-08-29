@@ -5,7 +5,7 @@ export const APP_CONFIG = {
   website: 'https://www.cswingenieriacivil.com',
   email: 'contacto@cswingenieriacivil.com',
   toolsUrl: 'https://www.cswingenieriacivil.com/herramientas',
-  copyrightMessage: '© CSW Ingeniería Civil. Todos los derechos reservados.',
+  copyrightMessage: 'CSW Ingeniería Civil 2025 ©',
 };
 
 // Constantes para SEO

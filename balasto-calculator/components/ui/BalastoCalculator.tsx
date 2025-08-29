@@ -266,8 +266,7 @@ export function BalastoCalculator() {
             </h1>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
               Herramienta para calcular el coeficiente de balasto basada en las teorías de Terzaghi 
-              y otros autores. Ideal para ingenieros civiles y geotécnicos que necesitan determinar 
-              el módulo de reacción de subrasante.
+              y otros autores. Ideal para determinar el módulo de reacción de subrasante.
             </p>
           </div>
       

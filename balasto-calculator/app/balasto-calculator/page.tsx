@@ -3,7 +3,7 @@ import BalastoCalculator from '../../components/ui/BalastoCalculator';
 
 export const metadata: Metadata = {
   title: 'Calculadora de Coeficiente de Balasto - CSW Ingeniería Civil',
-  description: 'Calculadora para determinar el coeficiente de balasto basada en las teorías de Terzaghi y otros autores. Ideal para ingenieros civiles y geotécnicos.',
+  description: 'Calculadora para determinar el coeficiente de balasto basada en las teorías de Terzaghi y otros autores.',
   keywords: ['coeficiente de balasto', 'módulo de balasto', 'módulo de reacción', 'subrasante', 'ingeniería geotécnica', 'terzaghi'],
   authors: [{ name: 'CSW Ingeniería Civil' }],
   openGraph: {
