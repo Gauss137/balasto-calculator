@@ -38,10 +38,10 @@ export function MobileMenu() {
         </svg>
       </button>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="fixed inset-0 top-auto left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50">
-          <div className="px-6 py-4 space-y-4">
+        <div className="absolute top-full mt-2 right-2 bg-white shadow-lg border border-gray-200 rounded-lg z-50 w-48">
+          <div className="px-4 py-3 space-y-2">
             <a
               href="https://www.cswingenieriacivil.com/herramientas"
               target="_blank"
