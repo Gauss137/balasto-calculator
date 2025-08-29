@@ -28,16 +28,12 @@ export function Header() {
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <a 
             href="https://www.cswingenieriacivil.com/herramientas"
-            target="_blank" 
-            rel="noopener noreferrer" 
             className="text-gray-700 hover:text-[#f1d475] transition-colors"
           >
             Más
           </a>
           <a 
             href={EXTERNAL_LINKS.CONTACT}
-            target="_blank" 
-            rel="noopener noreferrer" 
             className="text-gray-700 hover:text-[#f1d475] transition-colors"
           >
             Contacto

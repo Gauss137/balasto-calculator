@@ -12,8 +12,8 @@ export const APP_CONFIG = {
 export const EXTERNAL_LINKS = {
   website: 'https://www.cswingenieriacivil.com',
   tools: 'https://www.cswingenieriacivil.com/herramientas',
-  contact: 'https://www.cswingenieriacivil.com/contacto',
-  CONTACT: 'https://www.cswingenieriacivil.com/contacto',
+  contact: 'https://bio.site/csw',
+  CONTACT: 'https://bio.site/csw',
   about: 'https://www.cswingenieriacivil.com/nosotros',
   services: 'https://www.cswingenieriacivil.com/servicios',
   blog: 'https://www.cswingenieriacivil.com/blog',
