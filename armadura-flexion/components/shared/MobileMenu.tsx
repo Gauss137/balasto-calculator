@@ -1,5 +1,6 @@
 "use client";
 
+// Mobile menu with side-drawer implementation
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { EXTERNAL_LINKS } from './constants';
