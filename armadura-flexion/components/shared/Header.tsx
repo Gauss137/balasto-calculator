@@ -45,7 +45,9 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <MobileMenu />
+        <div className="md:hidden relative">
+          <MobileMenu />
+        </div>
       </nav>
     </header>
   );
