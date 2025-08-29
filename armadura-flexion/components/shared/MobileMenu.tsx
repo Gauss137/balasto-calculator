@@ -40,7 +40,7 @@ export function MobileMenu() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white shadow-lg border border-gray-200 rounded-b-lg z-50 min-w-[200px] max-w-[300px]">
+        <div className="fixed inset-0 top-auto left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50">
           <div className="px-6 py-4 space-y-4">
             <a
               href="https://www.cswingenieriacivil.com/herramientas"
