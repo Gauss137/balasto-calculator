@@ -331,14 +331,14 @@ export function AsSlabCalculator() {
                 Con el área de acero calculada, puedes determinar el número de barras y espaciamiento. Una vez en la página, haz clic en la pestaña "Cuantías y Separaciones" (la tercera calculadora de izquierda a derecha).
               </p>
              <div className="flex justify-center">
-                              <a 
-                  href="https://steelcalculator.cswingenieriacivil.com/steel-calculator" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Ir a Calculadora de Cuantías y Separaciones →
-                </a>
+               <a 
+                 href="https://steelcalculator.cswingenieriacivil.com/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="inline-flex items-center px-8 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
+               >
+                 Ir a Calculadora de Cuantías y Separaciones →
+               </a>
              </div>
            </div>
          )}
